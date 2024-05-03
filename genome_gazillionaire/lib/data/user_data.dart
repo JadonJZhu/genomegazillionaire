@@ -1,3 +1,3 @@
 import 'package:genome_gazillionaire/models/user.dart';
 
-final user = User(username: "Username", iconFilePath: "");
+final userData = User(username: "Username", iconFilePath: "");
