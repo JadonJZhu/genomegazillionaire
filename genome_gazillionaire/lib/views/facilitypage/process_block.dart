@@ -1,25 +1,30 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:genome_gazillionaire/models/process.dart';
 import 'package:genome_gazillionaire/views/facilitypage/rate_container.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ProcessBlock extends StatefulWidget {
-  const ProcessBlock({super.key});
+class ProcessBlock extends StatelessWidget {
+  ProcessBlock({
+    super.key,
+    required this.process,
+    required this.completeProcess,
+  });
 
-  @override
-  State<ProcessBlock> createState() => _ProcessBlockState();
-}
+  final Process process;
 
-class _ProcessBlockState extends State<ProcessBlock> {
   final titleStyle = GoogleFonts.lato(
     fontWeight: FontWeight.w900,
     fontSize: 20,
   );
+
   final subtitleStyle = GoogleFonts.lato(
     fontWeight: FontWeight.w700,
     fontSize: 15,
     color: Colors.white,
   );
+
+  final void Function(double) completeProcess;
 
   @override
   Widget build(BuildContext context) {
@@ -43,24 +48,30 @@ class _ProcessBlockState extends State<ProcessBlock> {
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Text(
-                "Gene Selection",
+                process.name,
                 style: titleStyle,
               ),
             ),
             Row(
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => completeProcess(process.moneyPerClick),
                   style:
                       ElevatedButton.styleFrom(backgroundColor: Colors.orange),
-                  child: Text("Buy \$\$\$", style: subtitleStyle),
+                  child: Text("Buy: \$${process.cost.toString()}",
+                      style: subtitleStyle),
                 ),
-                RateContainer(subtitleStyle: subtitleStyle)
+                RateContainer(
+                    subtitleStyle: subtitleStyle,
+                    rate: process.effectivePerSecond)
               ],
             ),
           ],
         ),
-        CircleAvatar(radius: 40, backgroundImage: AssetImage("../../../assets/images/1.png"),),
+        CircleAvatar(
+          radius: 40,
+          backgroundImage: AssetImage("../../../assets/images/1.png"),
+        ),
       ],
     );
   }

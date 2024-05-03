@@ -1,6 +1,6 @@
 import 'package:genome_gazillionaire/models/investor.dart';
 
-List<Investor> investorList = [
+List<Investor> investorData = [
   Investor(
     name: "Investor1",
     description: "Description1",

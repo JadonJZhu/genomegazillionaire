@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 class RateContainer extends StatelessWidget {
-  const RateContainer({super.key, required this.subtitleStyle});
+  const RateContainer(
+      {super.key, required this.subtitleStyle, required this.rate});
 
   final TextStyle subtitleStyle;
+  final double rate;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class RateContainer extends StatelessWidget {
               ),
             ],
           ),
-          child: Text("Rate of \$\$\$", style: subtitleStyle)),
+          child: Text("Rate: \$$rate", style: subtitleStyle)),
     );
   }
 }

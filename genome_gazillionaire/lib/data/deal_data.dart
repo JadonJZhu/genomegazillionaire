@@ -1,6 +1,6 @@
 import 'package:genome_gazillionaire/models/deal.dart';
 
-List<Deal> dealList = [
+List<Deal> dealData = [
   Deal(
     corporationName: "Corporation1",
     description: "Description1",
