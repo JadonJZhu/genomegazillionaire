@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import '../util/process_block.dart';
+import 'process_block.dart';
 
 class FacilityPage extends StatelessWidget {
   const FacilityPage({super.key});
