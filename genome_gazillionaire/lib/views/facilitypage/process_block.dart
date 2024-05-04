@@ -9,6 +9,7 @@ class ProcessBlock extends StatelessWidget {
     super.key,
     required this.process,
     required this.completeProcess,
+    required this.hireManager,
   });
 
   final Process process;
@@ -24,10 +25,15 @@ class ProcessBlock extends StatelessWidget {
     color: Colors.white,
   );
 
-  final void Function(double) completeProcess;
+  final void Function(Process) completeProcess;
+  final void Function(Process) hireManager;
 
   @override
   Widget build(BuildContext context) {
+    final String buttonText = process.isPurchased
+        ? "\$${process.moneyPerClick} per click"
+        : "Buy: \$${process.cost}";
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -55,11 +61,10 @@ class ProcessBlock extends StatelessWidget {
             Row(
               children: [
                 ElevatedButton(
-                  onPressed: () => completeProcess(process.moneyPerClick),
+                  onPressed: () => completeProcess(process),
                   style:
                       ElevatedButton.styleFrom(backgroundColor: Colors.orange),
-                  child: Text("Buy: \$${process.cost.toString()}",
-                      style: subtitleStyle),
+                  child: Text(buttonText, style: subtitleStyle),
                 ),
                 RateContainer(
                     subtitleStyle: subtitleStyle,
@@ -68,9 +73,12 @@ class ProcessBlock extends StatelessWidget {
             ),
           ],
         ),
-        CircleAvatar(
-          radius: 40,
-          backgroundImage: AssetImage("../../../assets/images/1.png"),
+        GestureDetector(
+          onTap: process.hasManager ? null : () => hireManager(process),
+          child: CircleAvatar(
+            radius: 40,
+            backgroundImage: AssetImage("../../../assets/images/1.png"),
+          ),
         ),
       ],
     );

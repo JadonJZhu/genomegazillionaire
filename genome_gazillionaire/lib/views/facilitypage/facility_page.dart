@@ -2,7 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:genome_gazillionaire/data/process_data.dart';
 import 'package:genome_gazillionaire/data/user_data.dart';
+import 'package:genome_gazillionaire/models/process.dart';
 import 'package:genome_gazillionaire/views/facilitypage/process_list.dart';
+import 'dart:async';
 
 class FacilityPage extends StatefulWidget {
   const FacilityPage({super.key});
@@ -16,8 +18,44 @@ class _FacilityPageState extends State<FacilityPage> {
 
   final processList = processData;
 
-  void completeProcess(double revenue) {
-    setState(() => user.balance += revenue);
+  late Timer _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    // Start the periodic timer
+    _timer = Timer.periodic(Duration(seconds: 1), gainRevenue);
+  }
+
+  @override
+  void dispose() {
+    // Cancel the timer to prevent memory leaks
+    _timer.cancel();
+    super.dispose();
+  }
+
+  void gainRevenue(Timer timer) {
+    for (Process process in processList) {
+      if (process.hasManager) {
+        setState(() => user.balance += process.effectivePerSecond);
+      }
+    }
+  }
+
+  void completeProcess(Process process) {
+    setState(() {
+      if (!process.isPurchased) {
+        process.purchase();
+      } else {
+        user.balance += process.moneyPerClick;
+      }
+    });
+  }
+
+  void hireManager(Process process) {
+    setState(() {
+      process.hireManager();
+    });
   }
 
   @override
@@ -25,13 +63,16 @@ class _FacilityPageState extends State<FacilityPage> {
     return Scaffold(
       backgroundColor: Colors.lightGreen,
       appBar: AppBar(
-        title: Text("Genome Gazillionaire \$${user.balance.toString()}"),
+        title: Text("Genome Gazillionaire \$${user.balance}"),
         leading: CircleAvatar(
           backgroundImage: AssetImage("../../assets/images/1.png"),
         ),
         backgroundColor: Colors.green,
       ),
-      body: ProcessList(processList: processList, completeProcess: completeProcess),
+      body: ProcessList(
+          processList: processList,
+          completeProcess: completeProcess,
+          hireManager: hireManager),
     );
   }
 }

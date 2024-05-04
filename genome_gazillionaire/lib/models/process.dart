@@ -13,13 +13,19 @@ class Process {
   final String iconFilePath;
 
   final double cost;
+  var _isPurchased = false;
   final double baseMoneyPerSecond;
   final double moneyPerClick;
   final int currentMultiplier = 1;
 
-  var hasManager = false;
+  var _hasManager = false;
   final double managerCost;
 
-  double get effectivePerSecond =>
-      hasManager ? baseMoneyPerSecond * currentMultiplier : 0;
+  bool get isPurchased => _isPurchased;
+  void purchase() => _isPurchased = true;
+
+  bool get hasManager => _hasManager;
+  void hireManager() => _hasManager = true;
+
+  double get effectivePerSecond => baseMoneyPerSecond * currentMultiplier;
 }
