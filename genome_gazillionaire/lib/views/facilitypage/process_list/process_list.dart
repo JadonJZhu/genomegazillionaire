@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:genome_gazillionaire/models/process.dart';
-import 'package:genome_gazillionaire/views/facilitypage/process_block.dart';
+import 'package:genome_gazillionaire/views/facilitypage/process_list/process_block.dart';
 
 class ProcessList extends StatelessWidget {
   const ProcessList(
-      {super.key, required this.processList, required this.completeProcess, required this.hireManager});
+      {super.key,
+      required this.processList,
+      required this.completeProcess,
+      required this.hireManager});
 
   final List<Process> processList;
   final void Function(Process) completeProcess;

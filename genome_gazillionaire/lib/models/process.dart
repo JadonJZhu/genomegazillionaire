@@ -1,16 +1,16 @@
 class Process {
   Process(
-      {required this.name,
+      {required this.title,
       required this.description,
-      required this.iconFilePath,
+      required this.avatarFilePath,
       required this.cost,
       required this.baseMoneyPerSecond,
       required this.moneyPerClick,
       required this.managerCost});
 
-  final String name;
+  final String title;
   final String description;
-  final String iconFilePath;
+  final String avatarFilePath;
 
   final double cost;
   var _isPurchased = false;

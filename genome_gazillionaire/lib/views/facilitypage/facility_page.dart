@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:genome_gazillionaire/data/process_data.dart';
 import 'package:genome_gazillionaire/data/user_data.dart';
 import 'package:genome_gazillionaire/models/process.dart';
-import 'package:genome_gazillionaire/views/facilitypage/process_list.dart';
+import 'package:genome_gazillionaire/views/facilitypage/process_list/process_description_view.dart';
+import 'package:genome_gazillionaire/views/facilitypage/process_list/process_list.dart';
 import 'dart:async';
 
 class FacilityPage extends StatefulWidget {
@@ -74,9 +75,10 @@ class _FacilityPageState extends State<FacilityPage> {
         backgroundColor: Colors.green,
       ),
       body: ProcessList(
-          processList: processList,
-          completeProcess: completeProcess,
-          hireManager: hireManager),
+        processList: processList,
+        completeProcess: completeProcess,
+        hireManager: hireManager,
+      ),
     );
   }
 }
