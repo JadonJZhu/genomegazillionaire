@@ -75,9 +75,19 @@ class ProcessBlock extends StatelessWidget {
         ),
         GestureDetector(
           onTap: process.hasManager ? null : () => hireManager(process),
-          child: CircleAvatar(
-            radius: 40,
-            backgroundImage: AssetImage("../../../assets/images/1.png"),
+          child: Container(
+            height: 80,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+            ),
+            child: ClipOval(
+              child: Opacity(
+                opacity: process.hasManager ? 1.0 : 0.5,
+                child: Image.asset(
+                  "../../../assets/images/1.png",
+                ),
+              ),
+            ),
           ),
         ),
       ],

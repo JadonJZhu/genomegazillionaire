@@ -44,8 +44,9 @@ class _FacilityPageState extends State<FacilityPage> {
 
   void completeProcess(Process process) {
     setState(() {
-      if (!process.isPurchased) {
+      if (!process.isPurchased && user.balance >= process.cost) {
         process.purchase();
+        user.balance -= process.cost;
       } else {
         user.balance += process.moneyPerClick;
       }
@@ -54,7 +55,10 @@ class _FacilityPageState extends State<FacilityPage> {
 
   void hireManager(Process process) {
     setState(() {
-      process.hireManager();
+      if (user.balance >= process.managerCost) {
+        process.hireManager();
+        user.balance -= process.managerCost;
+      }
     });
   }
 

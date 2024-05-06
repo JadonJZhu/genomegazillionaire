@@ -3,7 +3,7 @@ class User {
 
   final String username;
   final String iconFilePath;
-  var balance = 0.0;
+  double balance = 5.0;
 
   /*double get balance {
     // Every second:
