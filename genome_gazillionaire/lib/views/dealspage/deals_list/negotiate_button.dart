@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genome_gazillionaire/models/deal.dart';
+import 'package:genome_gazillionaire/views/dealspage/deals_list/negotiation_dialog.dart';
 
 class NegotiateButton extends StatelessWidget {
   const NegotiateButton({super.key, required this.deal});
@@ -10,7 +11,7 @@ class NegotiateButton extends StatelessWidget {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return Text("NegotiationView");
+        return NegotiationDialog(deal: deal);
       },
     );
   }
@@ -18,7 +19,7 @@ class NegotiateButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => pushNegotiation(context, deal),
+    onTap: () => pushNegotiation(context, deal),
       child: Container(
         height: 110,
         decoration: const BoxDecoration(
