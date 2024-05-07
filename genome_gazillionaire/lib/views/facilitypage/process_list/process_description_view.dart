@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:genome_gazillionaire/models/process.dart';
 import 'package:genome_gazillionaire/views/globals/globals_styles.dart';
-import 'package:genome_gazillionaire/views/globals/orange_button.dart';
+import 'package:genome_gazillionaire/views/globals/orange_elevated_button.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProcessDescriptionView extends StatelessWidget {

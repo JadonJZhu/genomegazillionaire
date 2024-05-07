@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:genome_gazillionaire/data/process_data.dart';
 import 'package:genome_gazillionaire/data/user_data.dart';
 import 'package:genome_gazillionaire/models/process.dart';
+import 'package:genome_gazillionaire/views/dealspage/deals_page.dart';
 import 'package:genome_gazillionaire/views/facilitypage/process_list/process_list.dart';
 import 'dart:async';
+
+import 'package:genome_gazillionaire/views/globals/orange_elevated_button.dart';
+import 'package:genome_gazillionaire/views/investorspage/investors_page.dart';
 
 class FacilityPage extends StatefulWidget {
   const FacilityPage({super.key});
@@ -62,6 +66,23 @@ class _FacilityPageState extends State<FacilityPage> {
     });
   }
 
+  void pushDealsPage(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return DealsPage();
+      },
+    );
+  }
+
+  void pushInvestorsPage(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return InvestorsPage();
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,10 +94,31 @@ class _FacilityPageState extends State<FacilityPage> {
         ),
         backgroundColor: Colors.green,
       ),
-      body: ProcessList(
-        processList: processList,
-        completeProcess: completeProcess,
-        hireManager: hireManager,
+      body: Column(
+        children: [
+          ProcessListView(
+            processList: processList,
+            completeProcess: completeProcess,
+            hireManager: hireManager,
+          ),
+          Spacer(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              OrangeElevatedButton(
+                text: "Deals",
+                onPressed: () => pushDealsPage(context),
+                padding: EdgeInsets.symmetric(horizontal: 35),
+              ),
+              SizedBox(width: 30),
+              OrangeElevatedButton(
+                text: "Investors",
+                onPressed: () => pushInvestorsPage(context),
+              ),
+            ],
+          ),
+          SizedBox(height: 40),
+        ],
       ),
     );
   }

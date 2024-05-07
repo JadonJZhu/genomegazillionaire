@@ -6,7 +6,7 @@ import 'package:genome_gazillionaire/views/facilitypage/process_list/process_ava
 import 'package:genome_gazillionaire/views/facilitypage/process_list/process_title.dart';
 import 'package:genome_gazillionaire/views/facilitypage/process_list/rate_container.dart';
 import 'package:genome_gazillionaire/views/globals/globals_styles.dart';
-import 'package:genome_gazillionaire/views/globals/orange_button.dart';
+import 'package:genome_gazillionaire/views/globals/orange_elevated_button.dart';
 
 class ProcessBlock extends StatelessWidget {
   ProcessBlock({

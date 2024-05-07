@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:genome_gazillionaire/models/process.dart';
 import 'package:genome_gazillionaire/views/facilitypage/process_list/process_block.dart';
 
-class ProcessList extends StatelessWidget {
-  const ProcessList(
+class ProcessListView extends StatelessWidget {
+  const ProcessListView(
       {super.key,
       required this.processList,
       required this.completeProcess,
@@ -15,7 +15,7 @@ class ProcessList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Expanded(
       child: ListView.builder(
         itemCount: processList.length,
         itemBuilder: (context, index) => ProcessBlock(

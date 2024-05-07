@@ -9,8 +9,8 @@ class ProcessAvatarButton extends StatelessWidget {
   });
 
   final Process process;
-  
-  void pushDescription(BuildContext context, Process process) {
+
+  void pushDescriptionView(BuildContext context, Process process) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -22,7 +22,7 @@ class ProcessAvatarButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => pushDescription(context, process),
+      onTap: () => pushDescriptionView(context, process),
       child: Container(
         height: 110,
         decoration: const BoxDecoration(
