@@ -1,15 +1,13 @@
-class Deal {
+import 'package:genome_gazillionaire/models/entity.dart';
+
+class Deal extends Entity {
   Deal(
-      {required this.corporationName,
-      required this.description,
-      required this.iconFilePath, 
+      {required super.title,
+      required super.description,
+      required super.avatarFilePath, 
       required this.processIndex,
       required this.cost, 
       required this.multiplierValue});
-
-  String corporationName;
-  String description;
-  String iconFilePath;
 
   int processIndex;
   double cost;

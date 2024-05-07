@@ -2,11 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:genome_gazillionaire/models/process.dart';
 import 'package:genome_gazillionaire/views/facilitypage/process_list/manager_button.dart';
-import 'package:genome_gazillionaire/views/facilitypage/process_list/process_avatar_button.dart';
+import 'package:genome_gazillionaire/views/globals/buttons/avatar_button.dart';
 import 'package:genome_gazillionaire/views/facilitypage/process_list/process_title.dart';
 import 'package:genome_gazillionaire/views/facilitypage/process_list/rate_container.dart';
 import 'package:genome_gazillionaire/views/globals/globals_styles.dart';
-import 'package:genome_gazillionaire/views/globals/orange_elevated_button.dart';
+import 'package:genome_gazillionaire/views/globals/buttons/orange_elevated_button.dart';
 
 class ProcessBlock extends StatelessWidget {
   ProcessBlock({
@@ -33,8 +33,9 @@ class ProcessBlock extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          ProcessAvatarButton(
-              process: process),
+          AvatarButton(
+            entity: process
+          ),
           Column(
             children: [
               ProcessTitle(process.title),

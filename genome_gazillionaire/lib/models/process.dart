@@ -1,16 +1,15 @@
-class Process {
+import 'package:genome_gazillionaire/models/entity.dart';
+
+class Process extends Entity {
   Process(
-      {required this.title,
-      required this.description,
-      required this.avatarFilePath,
+      {required super.title,
+      required super.description,
+      required super.avatarFilePath,
       required this.cost,
       required this.baseMoneyPerSecond,
       required this.moneyPerClick,
       required this.managerCost});
 
-  final String title;
-  final String description;
-  final String avatarFilePath;
 
   final double cost;
   var _isPurchased = false;

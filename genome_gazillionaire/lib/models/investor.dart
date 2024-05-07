@@ -1,15 +1,13 @@
-class Investor {
+import 'package:genome_gazillionaire/models/entity.dart';
 
-    Investor({required this.name, 
-    required this.description, 
-    required this.iconFilePath, 
+class Investor extends Entity {
+
+    Investor({required super.title, 
+    required super.description, 
+    required super.avatarFilePath, 
     required this.profitsPercent, 
     required this.offeredMoney, 
     required this.minDiceRoll});
-
-    String name;
-    String description;
-    String iconFilePath;
 
     var isPurchased = false;
     int profitsPercent;

@@ -5,9 +5,10 @@ import 'package:genome_gazillionaire/data/user_data.dart';
 import 'package:genome_gazillionaire/models/process.dart';
 import 'package:genome_gazillionaire/views/dealspage/deals_page.dart';
 import 'package:genome_gazillionaire/views/facilitypage/process_list/process_list.dart';
+import 'package:genome_gazillionaire/views/globals/globals_styles.dart';
 import 'dart:async';
 
-import 'package:genome_gazillionaire/views/globals/orange_elevated_button.dart';
+import 'package:genome_gazillionaire/views/globals/buttons/orange_elevated_button.dart';
 import 'package:genome_gazillionaire/views/investorspage/investors_page.dart';
 
 class FacilityPage extends StatefulWidget {
@@ -77,10 +78,11 @@ class _FacilityPageState extends State<FacilityPage> {
 
   void pushInvestorsPage(BuildContext context) {
     showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return InvestorsPage();
-        });
+      context: context,
+      builder: (BuildContext context) {
+        return InvestorsPage();
+      },
+    );
   }
 
   @override
@@ -88,7 +90,7 @@ class _FacilityPageState extends State<FacilityPage> {
     return Scaffold(
       backgroundColor: Colors.lightGreen,
       appBar: AppBar(
-        title: Text("Genome Gazillionaire \$${user.balance}"),
+        title: Text("Genome Gazillionaire \$${user.balance}", style: pageTitleStyle),
         leading: CircleAvatar(
           backgroundImage: AssetImage("../../assets/images/1.png"),
         ),
