@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:genome_gazillionaire/data/process_data.dart';
 import 'package:genome_gazillionaire/data/user_data.dart';
 import 'package:genome_gazillionaire/models/process.dart';
-import 'package:genome_gazillionaire/views/facilitypage/process_list/process_description_view.dart';
 import 'package:genome_gazillionaire/views/facilitypage/process_list/process_list.dart';
 import 'dart:async';
 

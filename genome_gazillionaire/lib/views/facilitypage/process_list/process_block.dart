@@ -5,7 +5,8 @@ import 'package:genome_gazillionaire/views/facilitypage/process_list/manager_but
 import 'package:genome_gazillionaire/views/facilitypage/process_list/process_avatar_button.dart';
 import 'package:genome_gazillionaire/views/facilitypage/process_list/process_title.dart';
 import 'package:genome_gazillionaire/views/facilitypage/process_list/rate_container.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:genome_gazillionaire/views/globals/globals_styles.dart';
+import 'package:genome_gazillionaire/views/globals/orange_button.dart';
 
 class ProcessBlock extends StatelessWidget {
   ProcessBlock({
@@ -16,12 +17,6 @@ class ProcessBlock extends StatelessWidget {
   });
 
   final Process process;
-
-  final subtitleStyle = GoogleFonts.lato(
-    fontWeight: FontWeight.w700,
-    fontSize: 15,
-    color: Colors.white,
-  );
 
   final void Function(Process) completeProcess;
   final void Function(Process) hireManager;
@@ -45,11 +40,9 @@ class ProcessBlock extends StatelessWidget {
               ProcessTitle(process.title),
               Row(
                 children: [
-                  ElevatedButton(
+                  OrangeElevatedButton(
                     onPressed: () => completeProcess(process),
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.orange),
-                    child: Text(buttonText, style: subtitleStyle),
+                    text: buttonText,
                   ),
                   RateContainer(
                       subtitleStyle: subtitleStyle,

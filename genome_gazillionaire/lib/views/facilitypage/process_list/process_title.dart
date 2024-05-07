@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:genome_gazillionaire/views/globals/globals_styles.dart';
 
 class ProcessTitle extends StatelessWidget {
-  ProcessTitle(this.processTitle, {super.key});
+  const ProcessTitle(this.processTitle, {super.key});
 
   final String processTitle;
-
-  final titleStyle = GoogleFonts.lato(
-    fontWeight: FontWeight.w900,
-    fontSize: 20,
-  );
 
   @override
   Widget build(BuildContext context) {
