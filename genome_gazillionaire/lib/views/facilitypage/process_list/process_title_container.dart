@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:genome_gazillionaire/views/globals/globals_styles.dart';
 
-class ProcessTitle extends StatelessWidget {
-  const ProcessTitle(this.processTitle, {super.key});
+class ProcessTitleContainer
+ extends StatelessWidget {
+  const ProcessTitleContainer
+  (this.processTitle, {super.key});
 
   final String processTitle;
 

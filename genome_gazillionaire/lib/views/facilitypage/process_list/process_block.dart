@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:genome_gazillionaire/models/process_model.dart';
 import 'package:genome_gazillionaire/views/facilitypage/process_list/manager_button.dart';
 import 'package:genome_gazillionaire/views/globals/buttons/avatar_button.dart';
-import 'package:genome_gazillionaire/views/facilitypage/process_list/process_title.dart';
+import 'package:genome_gazillionaire/views/facilitypage/process_list/process_title_container.dart';
 import 'package:genome_gazillionaire/views/facilitypage/process_list/rate_container.dart';
 import 'package:genome_gazillionaire/views/globals/globals_styles.dart';
 import 'package:genome_gazillionaire/views/globals/buttons/orange_elevated_button.dart';
@@ -38,13 +38,16 @@ class ProcessBlock extends StatelessWidget {
           ),
           Column(
             children: [
-              ProcessTitle(process.title),
+              ProcessTitleContainer(process.title),
+              SizedBox(height: 5),
               Row(
                 children: [
                   OrangeElevatedButton(
                     onPressed: () => completeProcess(process),
                     text: buttonText,
+                    elevation: 0,
                   ),
+                  SizedBox(width: 10),
                   RateContainer(
                       subtitleStyle: subtitleStyle,
                       rate: process.effectivePerSecond)
