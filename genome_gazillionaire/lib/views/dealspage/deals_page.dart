@@ -22,6 +22,7 @@ class _DealsPageState extends State<DealsPage> {
         deal.purchase();
       }
     });
+
     Navigator.pop(context);
     if (deal.process.isSeized) {
       showDialog(
@@ -30,6 +31,7 @@ class _DealsPageState extends State<DealsPage> {
             return SmallTextDialogBox.dealSeized(
               text: Text(
                 "${deal.title} seized ${deal.process.title} for ${deal.loopholeOwnershipHours} hours!",
+                style: blackSubtitleStyle,
                 textAlign: TextAlign.center,
               ),
             );

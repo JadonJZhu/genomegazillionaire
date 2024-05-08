@@ -9,7 +9,7 @@ import 'package:genome_gazillionaire/views/globals/globals_styles.dart';
 import 'package:genome_gazillionaire/views/globals/buttons/orange_elevated_button.dart';
 
 class ProcessBlock extends StatelessWidget {
-  ProcessBlock({
+  const ProcessBlock({
     super.key,
     required this.process,
     required this.completeProcess,

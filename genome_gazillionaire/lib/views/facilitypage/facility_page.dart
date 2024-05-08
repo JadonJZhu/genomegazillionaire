@@ -5,6 +5,8 @@ import 'package:genome_gazillionaire/data/user_data.dart';
 import 'package:genome_gazillionaire/models/process_model.dart';
 import 'package:genome_gazillionaire/views/dealspage/deals_page.dart';
 import 'package:genome_gazillionaire/views/facilitypage/process_list/process_list.dart';
+import 'package:genome_gazillionaire/views/globals/dialogs/insufficient_funds_dialog.dart';
+import 'package:genome_gazillionaire/views/globals/dialogs/small_text_dialog_box.dart';
 import 'package:genome_gazillionaire/views/globals/globals_styles.dart';
 import 'dart:async';
 
@@ -60,11 +62,20 @@ class _FacilityPageState extends State<FacilityPage> {
 
   void hireManager(Process process) {
     setState(() {
-      if (user.balance >= process.managerCost) {
+      if (user.balance < process.managerCost) {
+        pushSmallTextDialog("Insufficient funds!");
+      } else {
         process.hireManager();
         user.balance -= process.managerCost;
       }
     });
+  }
+
+  void pushSmallTextDialog(String text) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) => InsufficientFundsDialog()
+    );
   }
 
   void pushDealsPage(BuildContext context) {
@@ -90,7 +101,8 @@ class _FacilityPageState extends State<FacilityPage> {
     return Scaffold(
       backgroundColor: Colors.lightGreen,
       appBar: AppBar(
-        title: Text("Genome Gazillionaire \$${user.balance}", style: pageTitleStyle),
+        title: Text("Genome Gazillionaire \$${user.balance}",
+            style: pageTitleStyle),
         leading: CircleAvatar(
           backgroundImage: AssetImage("../../assets/images/1.png"),
         ),

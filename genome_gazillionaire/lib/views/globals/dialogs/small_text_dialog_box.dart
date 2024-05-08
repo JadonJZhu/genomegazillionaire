@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:genome_gazillionaire/views/globals/buttons/orange_elevated_button.dart';
 
 class SmallTextDialogBox extends StatelessWidget {
   const SmallTextDialogBox({
@@ -31,8 +32,8 @@ class SmallTextDialogBox extends StatelessWidget {
       ),
       contentPadding: EdgeInsets.zero,
       content: Container(
-        height: 150,
-        width: 200,
+        height: 250,
+        width: 300,
         padding: const EdgeInsets.symmetric(
           vertical: 50,
           horizontal: 10,
@@ -42,7 +43,14 @@ class SmallTextDialogBox extends StatelessWidget {
           color: backgroundColor,
           borderRadius: BorderRadius.circular(30),
         ),
-        child: text,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            text,
+            const Spacer(),
+            OrangeElevatedButton(text: "Done", onPressed: () => Navigator.pop(context))
+          ],
+        ),
       ),
     );
   }

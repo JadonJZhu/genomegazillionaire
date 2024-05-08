@@ -33,7 +33,10 @@ class RateContainer extends StatelessWidget {
         ),
         child: CustomPaint(
           painter: ArrowContainerPainter(),
-          child: Center(child: Text("Rate: \$$rate", style: subtitleStyle)),
+          child: Center(
+              child: FractionalTranslation(
+                  translation: const Offset(-0.05, 0),
+                  child: Text("Rate: \$$rate", style: subtitleStyle))),
         ),
       ),
     );
