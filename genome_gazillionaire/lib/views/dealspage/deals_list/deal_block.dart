@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:genome_gazillionaire/models/deal.dart';
-import 'package:genome_gazillionaire/views/dealspage/deals_list/negotiate_button.dart';
+import 'package:genome_gazillionaire/models/deal_model.dart';
+import 'package:genome_gazillionaire/views/dealspage/deals_list/negotiation/negotiate_button.dart';
 import 'package:genome_gazillionaire/views/globals/buttons/avatar_button.dart';
 
 class DealBlock extends StatelessWidget {
-  const DealBlock({super.key, required this.deal});
+  const DealBlock({super.key, required this.deal, required this.signDeal});
 
   final Deal deal;
+
+  final void Function(Deal) signDeal;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class DealBlock extends StatelessWidget {
               children: [
                 AvatarButton(entity: deal),
                 Text(deal.title),
-                NegotiateButton(deal: deal)
+                NegotiateButton(deal: deal, signDeal: signDeal)
               ],
             ),
           ),

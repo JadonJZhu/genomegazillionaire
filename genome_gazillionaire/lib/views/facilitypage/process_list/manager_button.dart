@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genome_gazillionaire/models/process.dart';
+import 'package:genome_gazillionaire/models/process_model.dart';
 
 class ManagerButton extends StatelessWidget {
   const ManagerButton(

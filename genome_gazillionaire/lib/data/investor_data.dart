@@ -1,4 +1,4 @@
-import 'package:genome_gazillionaire/models/investor.dart';
+import 'package:genome_gazillionaire/models/investor_model.dart';
 
 List<Investor> investorData = [
   Investor(

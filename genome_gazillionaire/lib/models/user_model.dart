@@ -4,9 +4,7 @@ class User {
   final String username;
   final String iconFilePath;
   double balance = 5.0;
+  int numLawyers = 0;
 
-  /*double get balance {
-    // Every second:
-    // return balance += sumeffectivePerSecond*(1-sumProftsPercent)
-  }*/
+  double get lawyerPrice => 1 + numLawyers * 1.5;
 }

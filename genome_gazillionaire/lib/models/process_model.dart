@@ -1,4 +1,4 @@
-import 'package:genome_gazillionaire/models/entity.dart';
+import 'package:genome_gazillionaire/models/entity_model.dart';
 
 class Process extends Entity {
   Process(
@@ -10,15 +10,16 @@ class Process extends Entity {
       required this.moneyPerClick,
       required this.managerCost});
 
-
   final double cost;
-  var _isPurchased = false;
+  bool _isPurchased = false;
   final double baseMoneyPerSecond;
   final double moneyPerClick;
-  final int currentMultiplier = 1;
+  int currentMultiplier = 1;
 
-  var _hasManager = false;
+  bool _hasManager = false;
   final double managerCost;
+
+  bool _isSeized = false;
 
   bool get isPurchased => _isPurchased;
   void purchase() => _isPurchased = true;
@@ -26,5 +27,14 @@ class Process extends Entity {
   bool get hasManager => _hasManager;
   void hireManager() => _hasManager = true;
 
-  double get effectivePerSecond => baseMoneyPerSecond * currentMultiplier;
+  bool get isSeized => _isSeized;
+  void seizeProcess(int hoursSeized) {
+    _isSeized = true;
+    Future.delayed(Duration(hours: hoursSeized), () {
+      _isSeized = false;
+    });
+  }
+
+  double get effectivePerSecond =>
+      isSeized ? 0 : baseMoneyPerSecond * currentMultiplier;
 }

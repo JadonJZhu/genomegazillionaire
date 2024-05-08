@@ -1,4 +1,4 @@
-import 'package:genome_gazillionaire/models/process.dart';
+import 'package:genome_gazillionaire/models/process_model.dart';
 
 List<Process> processData = [
   Process(

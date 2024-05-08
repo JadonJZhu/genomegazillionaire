@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class DialogBox extends StatelessWidget {
-  const DialogBox({
+class LargeDialogBox extends StatelessWidget {
+  const LargeDialogBox({
     super.key,
     this.backgroundColor = const Color.fromARGB(255, 188, 255, 112),
     this.borderColor = const Color.fromARGB(255, 200, 229, 168),

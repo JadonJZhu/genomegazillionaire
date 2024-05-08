@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:genome_gazillionaire/models/deal.dart';
-import 'package:genome_gazillionaire/models/entity.dart';
-import 'package:genome_gazillionaire/models/investor.dart';
+import 'package:genome_gazillionaire/models/deal_model.dart';
+import 'package:genome_gazillionaire/models/entity_model.dart';
+import 'package:genome_gazillionaire/models/investor_model.dart';
 import 'package:genome_gazillionaire/views/globals/buttons/orange_elevated_button.dart';
-import 'package:genome_gazillionaire/views/globals/dialogs/dialog_box.dart';
+import 'package:genome_gazillionaire/views/globals/dialogs/large_dialog_box.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 // ignore: must_be_immutable
@@ -23,7 +23,7 @@ class DescriptionDialog extends StatelessWidget {
       backgroundColor = Colors.yellow[200];
       borderColor = Colors.yellow;
     }
-    return DialogBox(
+    return LargeDialogBox(
       backgroundColor: backgroundColor!,
       borderColor: borderColor,
       child: Column(

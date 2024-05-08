@@ -1,4 +1,4 @@
-import 'package:genome_gazillionaire/models/entity.dart';
+import 'package:genome_gazillionaire/models/entity_model.dart';
 
 class Investor extends Entity {
 

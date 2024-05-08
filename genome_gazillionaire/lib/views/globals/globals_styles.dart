@@ -17,3 +17,9 @@ final subtitleStyle = GoogleFonts.lato(
   fontSize: 15,
   color: Colors.white,
 );
+
+final blackSubtitleStyle = GoogleFonts.lato(
+  fontWeight: FontWeight.w700,
+  fontSize: 15,
+  color: Colors.black,
+);

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genome_gazillionaire/models/entity.dart';
+import 'package:genome_gazillionaire/models/entity_model.dart';
 import 'package:genome_gazillionaire/views/globals/dialogs/description_dialog.dart';
 
 class AvatarButton extends StatelessWidget {

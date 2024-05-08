@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:genome_gazillionaire/data/process_data.dart';
 import 'package:genome_gazillionaire/data/user_data.dart';
-import 'package:genome_gazillionaire/models/process.dart';
+import 'package:genome_gazillionaire/models/process_model.dart';
 import 'package:genome_gazillionaire/views/dealspage/deals_page.dart';
 import 'package:genome_gazillionaire/views/facilitypage/process_list/process_list.dart';
 import 'package:genome_gazillionaire/views/globals/globals_styles.dart';

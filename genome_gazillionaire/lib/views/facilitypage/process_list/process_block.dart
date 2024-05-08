@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
-import 'package:genome_gazillionaire/models/process.dart';
+import 'package:genome_gazillionaire/models/process_model.dart';
 import 'package:genome_gazillionaire/views/facilitypage/process_list/manager_button.dart';
 import 'package:genome_gazillionaire/views/globals/buttons/avatar_button.dart';
 import 'package:genome_gazillionaire/views/facilitypage/process_list/process_title.dart';
