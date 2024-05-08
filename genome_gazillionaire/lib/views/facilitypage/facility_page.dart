@@ -49,20 +49,28 @@ class _FacilityPageState extends State<FacilityPage> {
     }
   }
 
-  void completeProcess(Process process) {
+  void purchaseProcess(Process process) {
     setState(() {
-      if (!process.isPurchased && user.balance >= process.cost) {
+      if (user.balance < process.cost) {
+        pushSmallTextDialog("Insufficient Funds");
+      } else {
         process.purchase();
         user.balance -= process.cost;
-      } else {
-        user.balance += process.moneyPerClick;
       }
-    });
+    }); // cannot be pressed if process is already purchased because the purchase button will disappear
+  }
+
+  void completeProcess(Process process) {
+    setState(() => user.balance += process.moneyPerClick);
   }
 
   void hireManager(Process process) {
     setState(() {
-      if (user.balance < process.managerCost) {
+      if (!process.isPurchased) return;
+
+      if (process.hasManager) {
+        pushSmallTextDialog("${process.title} already has a manager!");
+      } else if (user.balance < process.managerCost) {
         pushSmallTextDialog("Insufficient funds!");
       } else {
         process.hireManager();
@@ -73,9 +81,8 @@ class _FacilityPageState extends State<FacilityPage> {
 
   void pushSmallTextDialog(String text) {
     showDialog(
-      context: context,
-      builder: (BuildContext context) => InsufficientFundsDialog()
-    );
+        context: context,
+        builder: (BuildContext context) => InsufficientFundsDialog());
   }
 
   void pushDealsPage(BuildContext context) {
@@ -112,6 +119,7 @@ class _FacilityPageState extends State<FacilityPage> {
         children: [
           ProcessListView(
             processList: processList,
+            purchaseProcess: purchaseProcess,
             completeProcess: completeProcess,
             hireManager: hireManager,
           ),

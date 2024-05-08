@@ -2,7 +2,7 @@ import 'package:genome_gazillionaire/models/deal_model.dart';
 
 List<Deal> dealData = [
   Deal(
-    title: "Corporation1",
+    title: "c",
     description: "Corporation description 1",
     avatarFilePath: "../../assets/images/1.png",
     negotiationDescription: "Negotiation description 1",

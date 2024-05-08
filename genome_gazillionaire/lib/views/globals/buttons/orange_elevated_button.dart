@@ -3,7 +3,11 @@ import 'package:genome_gazillionaire/views/globals/globals_styles.dart';
 
 class OrangeElevatedButton extends StatelessWidget {
   const OrangeElevatedButton(
-      {super.key, required this.text, required this.onPressed, this.padding, this.elevation = 2.0});
+      {super.key,
+      required this.text,
+      required this.onPressed,
+      this.padding,
+      this.elevation = 2.0});
 
   final String text;
   final void Function()? onPressed;
@@ -15,8 +19,11 @@ class OrangeElevatedButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-          elevation: elevation,
-          backgroundColor: Colors.orange, padding: padding),
+        padding: padding,
+        elevation: elevation,
+        backgroundColor: Colors.orange,
+        disabledBackgroundColor: Colors.orange,
+      ),
       child: Text(text, style: subtitleStyle),
     );
   }

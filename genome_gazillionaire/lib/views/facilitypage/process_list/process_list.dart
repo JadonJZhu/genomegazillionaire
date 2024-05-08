@@ -6,10 +6,12 @@ class ProcessListView extends StatelessWidget {
   const ProcessListView(
       {super.key,
       required this.processList,
+      required this.purchaseProcess,
       required this.completeProcess,
       required this.hireManager});
 
   final List<Process> processList;
+  final void Function(Process) purchaseProcess;
   final void Function(Process) completeProcess;
   final void Function(Process) hireManager;
 
@@ -20,6 +22,7 @@ class ProcessListView extends StatelessWidget {
         itemCount: processList.length,
         itemBuilder: (context, index) => ProcessBlock(
           process: processList[index],
+          purchaseProcess: purchaseProcess,
           completeProcess: completeProcess,
           hireManager: hireManager,
         ),

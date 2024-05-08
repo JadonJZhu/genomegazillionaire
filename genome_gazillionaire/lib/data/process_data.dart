@@ -2,7 +2,7 @@ import 'package:genome_gazillionaire/models/process_model.dart';
 
 List<Process> processData = [
   Process(
-    title: "Process1",
+    title: "very very long process name",
     description: "Description1",
     avatarFilePath: "../../assets/images/1.png",
     cost: 3,
