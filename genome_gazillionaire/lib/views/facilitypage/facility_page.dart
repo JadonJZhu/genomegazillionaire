@@ -6,7 +6,6 @@ import 'package:genome_gazillionaire/models/process_model.dart';
 import 'package:genome_gazillionaire/views/dealspage/deals_page.dart';
 import 'package:genome_gazillionaire/views/facilitypage/process_list/process_list.dart';
 import 'package:genome_gazillionaire/views/globals/dialogs/insufficient_funds_dialog.dart';
-import 'package:genome_gazillionaire/views/globals/dialogs/small_text_dialog_box.dart';
 import 'package:genome_gazillionaire/views/globals/globals_styles.dart';
 import 'dart:async';
 
