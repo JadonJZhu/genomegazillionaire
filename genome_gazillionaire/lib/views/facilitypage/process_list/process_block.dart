@@ -1,27 +1,34 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:genome_gazillionaire/data/deal_data.dart';
 import 'package:genome_gazillionaire/models/process_model.dart';
 import 'package:genome_gazillionaire/views/facilitypage/process_list/manager_button.dart';
+import 'package:genome_gazillionaire/views/facilitypage/process_list/purchase_process_button.dart';
+import 'package:genome_gazillionaire/views/facilitypage/process_list/seized_overlay.dart';
 import 'package:genome_gazillionaire/views/globals/buttons/avatar_button.dart';
 import 'package:genome_gazillionaire/views/facilitypage/process_list/process_title_container.dart';
 import 'package:genome_gazillionaire/views/facilitypage/process_list/rate_container.dart';
-import 'package:genome_gazillionaire/views/globals/globals_styles.dart';
+import 'package:genome_gazillionaire/views/globals/global_styles.dart';
 import 'package:genome_gazillionaire/views/globals/buttons/orange_elevated_button.dart';
 
 class ProcessBlock extends StatelessWidget {
-  const ProcessBlock({
+  ProcessBlock({
     super.key,
     required this.process,
+    required this.processIndex,
     required this.purchaseProcess,
     required this.completeProcess,
     required this.hireManager,
   });
 
   final Process process;
+  final int processIndex;
 
   final void Function(Process) purchaseProcess;
   final void Function(Process) completeProcess;
   final void Function(Process) hireManager;
+
+  final dealList = dealData;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +36,7 @@ class ProcessBlock extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         Opacity(
-          opacity: process.isPurchased ? 1.0 : 0.1,
+          opacity: process.isPurchased && !process.isSeized ? 1.0 : 0.1,
           child: Padding(
             padding: const EdgeInsets.only(top: 20),
             child: Row(
@@ -47,7 +54,7 @@ class ProcessBlock extends StatelessWidget {
                           onPressed: process.isPurchased
                               ? () => completeProcess(process)
                               : null,
-                          text: "\$${process.moneyPerClick} per click",
+                          text: "\$${process.effectiveMoneyPerClick} per click",
                           elevation: 0,
                         ),
                         SizedBox(width: 10),
@@ -63,18 +70,13 @@ class ProcessBlock extends StatelessWidget {
             ),
           ),
         ),
-        Visibility(
-          visible: !process.isPurchased,
-          child: Transform.scale(
-            scale: 1.3,
-            child: FractionalTranslation(
-                translation: Offset(0, 0.2),
-                child: OrangeElevatedButton(
-                    onPressed: () => purchaseProcess(process),
-                    text: "${process.title}: \$${process.cost}")),
-          ),
+        PurchaseProcessButton(
+          process: process,
+          purchaseProcess: purchaseProcess,
         ),
+        SeizedOverlay(process: process, dealList: dealList, processIndex: processIndex),
       ],
     );
   }
 }
+

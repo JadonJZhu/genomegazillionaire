@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:genome_gazillionaire/models/entity_model.dart';
 
 class Process extends Entity {
@@ -7,19 +9,19 @@ class Process extends Entity {
       required super.avatarFilePath,
       required this.cost,
       required this.baseMoneyPerSecond,
-      required this.moneyPerClick,
+      required this.baseMoneyPerClick,
       required this.managerCost});
 
   final double cost;
   bool _isPurchased = false;
   final double baseMoneyPerSecond;
-  final double moneyPerClick;
+  final double baseMoneyPerClick;
   int currentMultiplier = 1;
 
   bool _hasManager = false;
   final double managerCost;
 
-  bool _isSeized = false;
+  int minutesUntilSeizeEnd = 0;
 
   bool get isPurchased => _isPurchased;
   void purchase() => _isPurchased = true;
@@ -27,14 +29,26 @@ class Process extends Entity {
   bool get hasManager => _hasManager;
   void hireManager() => _hasManager = true;
 
-  bool get isSeized => _isSeized;
+  bool get isSeized => minutesUntilSeizeEnd == 0 ? false : true;
   void seizeProcess(int hoursSeized) {
-    _isSeized = true;
-    Future.delayed(Duration(hours: hoursSeized), () {
-      _isSeized = false;
-    });
+    minutesUntilSeizeEnd = hoursSeized;
+    late Timer timer = Timer.periodic(
+      const Duration(minutes: 1),
+      (timer) {
+        minutesUntilSeizeEnd--;
+      },
+    );
+    Timer(
+      Duration(minutes: minutesUntilSeizeEnd),
+      () {
+        timer.cancel();
+        minutesUntilSeizeEnd == 0;
+      },
+    );
   }
 
+  double get effectiveMoneyPerClick =>
+      isSeized ? 0 : baseMoneyPerClick * currentMultiplier;
   double get effectivePerSecond =>
       isSeized ? 0 : baseMoneyPerSecond * currentMultiplier;
 }

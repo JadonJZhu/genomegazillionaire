@@ -11,5 +11,16 @@ List<Deal> dealData = [
     processIndex: 0,
     baseLoopholePercent: 100,
     loopholeOwnershipHours: 2,
+  ),
+  Deal(
+    title: "c",
+    description: "Corporation description 1",
+    avatarFilePath: "../../assets/images/1.png",
+    negotiationDescription: "Negotiation description 1",
+    cost: 3,
+    multiplierValue: 2,
+    processIndex: 1,
+    baseLoopholePercent: 100,
+    loopholeOwnershipHours: 2,
   )
 ];

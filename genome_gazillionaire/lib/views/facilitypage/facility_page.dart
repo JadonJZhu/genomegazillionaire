@@ -5,10 +5,9 @@ import 'package:genome_gazillionaire/data/user_data.dart';
 import 'package:genome_gazillionaire/models/process_model.dart';
 import 'package:genome_gazillionaire/views/dealspage/deals_page.dart';
 import 'package:genome_gazillionaire/views/facilitypage/process_list/process_list.dart';
-import 'package:genome_gazillionaire/views/globals/dialogs/insufficient_funds_dialog.dart';
-import 'package:genome_gazillionaire/views/globals/globals_styles.dart';
+import 'package:genome_gazillionaire/views/globals/global_functions.dart';
+import 'package:genome_gazillionaire/views/globals/global_styles.dart';
 import 'dart:async';
-
 import 'package:genome_gazillionaire/views/globals/buttons/orange_elevated_button.dart';
 import 'package:genome_gazillionaire/views/investorspage/investors_page.dart';
 
@@ -30,7 +29,7 @@ class _FacilityPageState extends State<FacilityPage> {
   void initState() {
     super.initState();
     // Start the periodic timer
-    _timer = Timer.periodic(Duration(seconds: 1), gainRevenue);
+    _timer = Timer.periodic(Duration(seconds: 1), refreshPage);
   }
 
   @override
@@ -40,18 +39,22 @@ class _FacilityPageState extends State<FacilityPage> {
     super.dispose();
   }
 
-  void gainRevenue(Timer timer) {
-    for (Process process in processList) {
-      if (process.hasManager) {
-        setState(() => user.balance += process.effectivePerSecond);
-      }
-    }
+  void refreshPage(Timer timer) {
+    setState(
+      () {
+        for (Process process in processList) {
+          if (process.hasManager) {
+            user.balance += process.effectivePerSecond;
+          }
+        }
+      },
+    );
   }
 
   void purchaseProcess(Process process) {
     setState(() {
       if (user.balance < process.cost) {
-        pushSmallTextDialog("Insufficient Funds");
+        pushInsufficientFundsDialog(context);
       } else {
         process.purchase();
         user.balance -= process.cost;
@@ -60,28 +63,18 @@ class _FacilityPageState extends State<FacilityPage> {
   }
 
   void completeProcess(Process process) {
-    setState(() => user.balance += process.moneyPerClick);
+    setState(() => user.balance += process.effectiveMoneyPerClick);
   }
 
   void hireManager(Process process) {
     setState(() {
-      if (!process.isPurchased) return;
-
-      if (process.hasManager) {
-        pushSmallTextDialog("${process.title} already has a manager!");
-      } else if (user.balance < process.managerCost) {
-        pushSmallTextDialog("Insufficient funds!");
+      if (user.balance < process.managerCost) {
+        pushInsufficientFundsDialog(context);
       } else {
         process.hireManager();
         user.balance -= process.managerCost;
       }
-    });
-  }
-
-  void pushSmallTextDialog(String text) {
-    showDialog(
-        context: context,
-        builder: (BuildContext context) => InsufficientFundsDialog());
+    }); // cannot be pressed if process already has a manager because the purchase button will disappear
   }
 
   void pushDealsPage(BuildContext context) {

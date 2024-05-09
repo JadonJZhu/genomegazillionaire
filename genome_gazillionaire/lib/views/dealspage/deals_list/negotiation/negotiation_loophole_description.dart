@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genome_gazillionaire/models/deal_model.dart';
-import 'package:genome_gazillionaire/views/globals/globals_styles.dart';
+import 'package:genome_gazillionaire/views/globals/global_styles.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class NegotiationLoopholeDescription extends StatelessWidget {

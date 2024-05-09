@@ -3,7 +3,8 @@ import 'package:genome_gazillionaire/data/user_data.dart';
 import 'package:genome_gazillionaire/models/deal_model.dart';
 import 'package:genome_gazillionaire/views/dealspage/deals_list/deals_list_view.dart';
 import 'package:genome_gazillionaire/views/globals/dialogs/small_text_dialog_box.dart';
-import 'package:genome_gazillionaire/views/globals/globals_styles.dart';
+import 'package:genome_gazillionaire/views/globals/global_functions.dart';
+import 'package:genome_gazillionaire/views/globals/global_styles.dart';
 
 class DealsPage extends StatefulWidget {
   const DealsPage({super.key});
@@ -17,26 +18,40 @@ class _DealsPageState extends State<DealsPage> {
 
   void signDeal(Deal deal) {
     setState(() {
-      if (user.balance >= deal.cost && !deal.isPurchased) {
-        user.balance -= deal.cost;
+      if (!deal.process.isPurchased) {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return SmallTextDialogBox(
+                text: Text(
+              "You have not purchased this process!",
+              style: blackSubtitleStyle,
+            ));
+          },
+        );
+      } else if (user.balance < deal.cost) {
+        Navigator.pop(context);
+        pushInsufficientFundsDialog(context);
+      } else {
+        Navigator.pop(context);
         deal.purchase();
+        user.balance -= deal.cost;
+
+        if (deal.process.isSeized) {
+          showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return SmallTextDialogBox.deal(
+                  text: Text(
+                    "${deal.title} seized ${deal.process.title} for ${deal.loopholeOwnershipHours} hours!",
+                    style: blackSubtitleStyle,
+                    textAlign: TextAlign.center,
+                  ),
+                );
+              });
+        }
       }
     });
-
-    Navigator.pop(context);
-    if (deal.process.isSeized) {
-      showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return SmallTextDialogBox.dealSeized(
-              text: Text(
-                "${deal.title} seized ${deal.process.title} for ${deal.loopholeOwnershipHours} hours!",
-                style: blackSubtitleStyle,
-                textAlign: TextAlign.center,
-              ),
-            );
-          });
-    }
   }
 
   @override

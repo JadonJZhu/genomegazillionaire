@@ -8,7 +8,7 @@ List<Process> processData = [
     cost: 3,
     baseMoneyPerSecond: 1,
     managerCost: 3,
-    moneyPerClick: 1,
+    baseMoneyPerClick: 1,
   ),
   Process(
     title: "Process2",
@@ -17,6 +17,6 @@ List<Process> processData = [
     cost: 3,
     baseMoneyPerSecond: 1,
     managerCost: 3,
-    moneyPerClick: 1,
+    baseMoneyPerClick: 1,
   ),
 ];

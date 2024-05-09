@@ -22,6 +22,7 @@ class ProcessListView extends StatelessWidget {
         itemCount: processList.length,
         itemBuilder: (context, index) => ProcessBlock(
           process: processList[index],
+          processIndex: index,
           purchaseProcess: purchaseProcess,
           completeProcess: completeProcess,
           hireManager: hireManager,

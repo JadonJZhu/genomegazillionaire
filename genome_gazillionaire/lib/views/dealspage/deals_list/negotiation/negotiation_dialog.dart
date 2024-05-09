@@ -5,7 +5,7 @@ import 'package:genome_gazillionaire/views/dealspage/deals_list/negotiation/cont
 import 'package:genome_gazillionaire/views/dealspage/deals_list/negotiation/negotiation_loophole_description.dart';
 import 'package:genome_gazillionaire/views/globals/buttons/orange_elevated_button.dart';
 import 'package:genome_gazillionaire/views/globals/dialogs/large_dialog_box.dart';
-import 'package:genome_gazillionaire/views/globals/globals_styles.dart';
+import 'package:genome_gazillionaire/views/globals/global_styles.dart';
 
 class NegotiationDialog extends StatelessWidget {
   NegotiationDialog({super.key, required this.deal, required this.signDeal});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genome_gazillionaire/views/globals/globals_styles.dart';
+import 'package:genome_gazillionaire/views/globals/global_styles.dart';
 
 class ProcessTitleContainer
  extends StatelessWidget {

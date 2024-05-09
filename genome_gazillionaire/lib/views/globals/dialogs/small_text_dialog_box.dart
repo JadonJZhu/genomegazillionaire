@@ -9,7 +9,7 @@ class SmallTextDialogBox extends StatelessWidget {
     required this.text,
   });
 
-  const SmallTextDialogBox.dealSeized({
+  const SmallTextDialogBox.deal({
     super.key,
     this.backgroundColor = const Color.fromARGB(255, 252, 202, 127),
     this.borderColor = Colors.orange,
