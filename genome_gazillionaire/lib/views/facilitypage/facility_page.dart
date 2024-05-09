@@ -43,6 +43,9 @@ class _FacilityPageState extends State<FacilityPage> {
     setState(
       () {
         for (Process process in processList) {
+          if (process.isSeized) {
+            process.secondsUntilSeizeEnd--;
+          }
           if (process.hasManager) {
             user.balance += process.effectivePerSecond;
           }

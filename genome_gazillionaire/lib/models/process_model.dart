@@ -21,7 +21,7 @@ class Process extends Entity {
   bool _hasManager = false;
   final double managerCost;
 
-  int minutesUntilSeizeEnd = 0;
+  int secondsUntilSeizeEnd = 0;
 
   bool get isPurchased => _isPurchased;
   void purchase() => _isPurchased = true;
@@ -29,23 +29,14 @@ class Process extends Entity {
   bool get hasManager => _hasManager;
   void hireManager() => _hasManager = true;
 
-  bool get isSeized => minutesUntilSeizeEnd == 0 ? false : true;
+  bool get isSeized => secondsUntilSeizeEnd == 0 ? false : true;
+
   void seizeProcess(int hoursSeized) {
-    minutesUntilSeizeEnd = hoursSeized;
-    late Timer timer = Timer.periodic(
-      const Duration(minutes: 1),
-      (timer) {
-        minutesUntilSeizeEnd--;
-      },
-    );
-    Timer(
-      Duration(minutes: minutesUntilSeizeEnd),
-      () {
-        timer.cancel();
-        minutesUntilSeizeEnd == 0;
-      },
-    );
+    secondsUntilSeizeEnd = hoursSeized * 3600;
   }
+
+  String get seizedFormattedTime =>
+      Duration(seconds: secondsUntilSeizeEnd).toString().split('.').first;
 
   double get effectiveMoneyPerClick =>
       isSeized ? 0 : baseMoneyPerClick * currentMultiplier;
