@@ -103,7 +103,7 @@ class _FacilityPageState extends State<FacilityPage> {
     return Scaffold(
       backgroundColor: Colors.lightGreen,
       appBar: AppBar(
-        title: Text("Genome Gazillionaire \$${user.balance}",
+        title: Text("Genome Gazillionaire \$${user.balance.toStringAsExponential()}",
             style: pageTitleStyle),
         leading: CircleAvatar(
           backgroundImage: AssetImage("../../assets/images/1.png"),
@@ -112,11 +112,14 @@ class _FacilityPageState extends State<FacilityPage> {
       ),
       body: Column(
         children: [
-          ProcessListView(
-            processList: processList,
-            purchaseProcess: purchaseProcess,
-            completeProcess: completeProcess,
-            hireManager: hireManager,
+          SizedBox(
+            height: 650,
+            child: ProcessListView(
+              processList: processList,
+              purchaseProcess: purchaseProcess,
+              completeProcess: completeProcess,
+              hireManager: hireManager,
+            ),
           ),
           Spacer(),
           Row(
@@ -131,6 +134,7 @@ class _FacilityPageState extends State<FacilityPage> {
               OrangeElevatedButton(
                 text: "Investors",
                 onPressed: () => pushInvestorsPage(context),
+                padding: EdgeInsets.symmetric(horizontal: 35),
               ),
             ],
           ),

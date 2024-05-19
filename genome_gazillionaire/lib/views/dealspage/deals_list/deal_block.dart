@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:genome_gazillionaire/models/deal_model.dart';
 import 'package:genome_gazillionaire/views/dealspage/deals_list/negotiation/negotiate_button.dart';
 import 'package:genome_gazillionaire/views/globals/buttons/avatar_button.dart';
+import 'package:genome_gazillionaire/views/globals/global_styles.dart';
 
 class DealBlock extends StatelessWidget {
   const DealBlock({super.key, required this.deal, required this.signDeal});
@@ -18,7 +19,7 @@ class DealBlock extends StatelessWidget {
         alignment: Alignment.center,
         children: [
           Container(
-            width: 400,
+            width: 475,
             height: 90,
             decoration: BoxDecoration(
               color: Colors.white,
@@ -28,7 +29,19 @@ class DealBlock extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 AvatarButton(entity: deal),
-                Text(deal.title),
+                SizedBox(
+                  width: 250,
+                  child: Column(
+                    children: [
+                      Text(deal.title, style: titleStyle),
+                      Text(
+                        "${deal.process.title} profit: ${deal.multiplierValue}x",
+                        style: blackSubtitleStyle,
+                      ),
+
+                    ],
+                  ),
+                ),
                 NegotiateButton(deal: deal, signDeal: signDeal)
               ],
             ),

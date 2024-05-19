@@ -74,9 +74,9 @@ class ProcessBlock extends StatelessWidget {
           process: process,
           purchaseProcess: purchaseProcess,
         ),
-        SeizedOverlay(process: process, dealList: dealList, processIndex: processIndex),
+        SeizedOverlay(
+            process: process, dealList: dealList, processIndex: processIndex),
       ],
     );
   }
 }
-

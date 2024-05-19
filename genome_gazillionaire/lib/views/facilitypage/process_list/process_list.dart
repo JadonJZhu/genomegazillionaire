@@ -17,16 +17,14 @@ class ProcessListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        itemCount: processList.length,
-        itemBuilder: (context, index) => ProcessBlock(
-          process: processList[index],
-          processIndex: index,
-          purchaseProcess: purchaseProcess,
-          completeProcess: completeProcess,
-          hireManager: hireManager,
-        ),
+    return ListView.builder(
+      itemCount: processList.length,
+      itemBuilder: (context, index) => ProcessBlock(
+        process: processList[index],
+        processIndex: index,
+        purchaseProcess: purchaseProcess,
+        completeProcess: completeProcess,
+        hireManager: hireManager,
       ),
     );
   }

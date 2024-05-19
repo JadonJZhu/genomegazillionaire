@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:genome_gazillionaire/models/entity_model.dart';
 
 class Process extends Entity {

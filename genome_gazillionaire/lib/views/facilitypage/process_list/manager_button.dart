@@ -33,8 +33,9 @@ class ManagerButton extends StatelessWidget {
           child: Transform.scale(
             scale: 0.8,
             child: OrangeElevatedButton(
-              text: "\$${process.managerCost}",
+              text: "\$${process.managerCost.toStringAsExponential()}",
               onPressed: process.isPurchased ? () => hireManager(process) : null,
+              padding: EdgeInsets.zero,
               elevation: 0
             ),
           ),

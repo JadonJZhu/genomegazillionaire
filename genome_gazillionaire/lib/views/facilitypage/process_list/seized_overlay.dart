@@ -21,7 +21,8 @@ class SeizedOverlay extends StatelessWidget {
       visible: process.isSeized,
       child: Transform.scale(
         scale: 1.3,
-        child: Text("Seized by ${dealList[processIndex].title}! Time remaining: ${process.seizedFormattedTime}",
+        child: Text(
+            "Seized by ${dealList[processIndex].title}! Time remaining: ${process.seizedFormattedTime}",
             style: subtitleStyle),
       ),
     );
