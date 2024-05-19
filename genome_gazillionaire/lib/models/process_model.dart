@@ -14,7 +14,7 @@ class Process extends Entity {
   bool _isPurchased = false;
   final double baseMoneyPerSecond;
   final double baseMoneyPerClick;
-  int currentMultiplier = 1;
+  double currentMultiplier = 1;
 
   bool _hasManager = false;
   final double managerCost;

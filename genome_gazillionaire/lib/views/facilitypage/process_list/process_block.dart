@@ -60,7 +60,8 @@ class ProcessBlock extends StatelessWidget {
                         SizedBox(width: 10),
                         RateContainer(
                             subtitleStyle: subtitleStyle,
-                            rate: process.effectivePerSecond)
+                            rate: process.effectivePerSecond
+                        )
                       ],
                     ),
                   ],

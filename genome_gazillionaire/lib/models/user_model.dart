@@ -5,6 +5,7 @@ class User {
   final String iconFilePath;
   double balance = 10000000000000.0;
   int numLawyers = 0;
+  int percentOwned = 100;
 
   double get lawyerPrice => 1 + numLawyers * 1.5;
 }

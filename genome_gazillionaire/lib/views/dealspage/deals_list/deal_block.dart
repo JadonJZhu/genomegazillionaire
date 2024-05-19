@@ -38,7 +38,10 @@ class DealBlock extends StatelessWidget {
                         "${deal.process.title} profit: ${deal.multiplierValue}x",
                         style: blackSubtitleStyle,
                       ),
-
+                      Text(
+                        "Cost: \$${deal.cost}",
+                        style: greenSubtitleTwoStyle,
+                      ),
                     ],
                   ),
                 ),
