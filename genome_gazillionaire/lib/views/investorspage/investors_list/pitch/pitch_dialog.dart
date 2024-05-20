@@ -59,14 +59,6 @@ class _PitchDialogState extends State<PitchDialog> {
         timer.cancel();
       }
     });
-
-    /* if (diceImageIndex + 1 >= investor.minDiceRoll) {
-      signInvestor(investor);
-    } else {
-      setState(() {
-        investor.decTries();
-      });
-    }  */
   }
 
   @override
