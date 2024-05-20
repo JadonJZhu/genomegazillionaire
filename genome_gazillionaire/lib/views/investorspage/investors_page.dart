@@ -1,12 +1,9 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:genome_gazillionaire/data/process_data.dart';
 import 'package:genome_gazillionaire/data/user_data.dart';
 import 'package:genome_gazillionaire/models/investor_model.dart';
 import 'package:genome_gazillionaire/views/globals/global_styles.dart';
 import 'package:genome_gazillionaire/views/investorspage/investors_list/investors_list_view.dart';
-import 'package:genome_gazillionaire/views/investorspage/investors_list/pitch/maintain_ownership_dialog.dart';
 
 class InvestorsPage extends StatefulWidget {
   const InvestorsPage({super.key});

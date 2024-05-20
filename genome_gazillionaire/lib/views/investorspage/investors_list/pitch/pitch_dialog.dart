@@ -1,11 +1,9 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:genome_gazillionaire/data/investor_data.dart';
 import 'package:genome_gazillionaire/data/user_data.dart';
 import 'package:genome_gazillionaire/models/investor_model.dart';
 import 'package:genome_gazillionaire/views/dealspage/deals_list/negotiation/container_divider.dart';
-//import 'package:genome_gazillionaire/views/investorspage/investors_list/pitch/negotiation_loophole_description.dart';
 import 'package:genome_gazillionaire/views/globals/buttons/orange_elevated_button.dart';
 import 'package:genome_gazillionaire/views/globals/dialogs/large_dialog_box.dart';
 import 'package:genome_gazillionaire/views/globals/global_styles.dart';
@@ -15,46 +13,46 @@ class PitchDialog extends StatefulWidget {
   final Investor investor;
   final void Function(Investor) signInvestor;
 
-  PitchDialog({required this.investor, required this.signInvestor});
+  const PitchDialog(  
+      {super.key, required this.investor, required this.signInvestor});
 
   @override
-  _PitchDialogState createState() => _PitchDialogState(investor: investor, signInvestor: signInvestor);
+  State<PitchDialog> createState() =>
+      _PitchDialogState();
 }
 
 class _PitchDialogState extends State<PitchDialog> {
-  _PitchDialogState({required this.investor, required this.signInvestor});
-  
-  final Investor investor;
-  final void Function(Investor) signInvestor;
+  _PitchDialogState();
   final user = userData;
 
   Random random = Random();
   int diceImageIndex = 0;
   int counter = 0;
   final List<String> diceImages = [
-    '../../../../assets/images/dice_1.png', 
+    '../../../../assets/images/dice_1.png',
     '../../../../assets/images/dice_2.png',
     '../../../../assets/images/dice_3.png',
     '../../../../assets/images/dice_4.png',
     '../../../../assets/images/dice_5.png',
-    '../../../../assets/images/dice_6.png'];
+    '../../../../assets/images/dice_6.png'
+  ];
 
-  void rollDice()
-  {
+  void rollDice() {
     Timer.periodic(const Duration(milliseconds: 80), (timer) {
       counter++;
       setState(() {
         diceImageIndex = random.nextInt(6);
       });
 
-      if (counter >= 12) {  
-        if (diceImageIndex + 1 >= investor.minDiceRoll) {
-          signInvestor(investor);
+      if (counter >= 12) {
+        if (diceImageIndex + 1 >= widget.investor.minDiceRoll) {
+          widget.signInvestor(widget.investor);
         } else {
-          investor.decTries();
-          if (investor.triesLeft == 0)
-            signInvestor(investor);
-        }  
+          widget.investor.decTries();
+          if (widget.investor.triesLeft == 0) {
+            widget.signInvestor(widget.investor);
+          }
+        }
         setState(() {
           counter = 0;
         });
@@ -79,7 +77,7 @@ class _PitchDialogState extends State<PitchDialog> {
       child: Column(
         children: [
           Text(
-            investor.title,
+            widget.investor.title,
             style: titleStyle,
             textScaler: const TextScaler.linear(1.2),
           ),
@@ -89,9 +87,9 @@ class _PitchDialogState extends State<PitchDialog> {
           const ContainerDivider(),
           const SizedBox(height: 30),
           SizedBox(
-            width: 250, 
+            width: 250,
             child: Text(
-              investor.investmentDescription,
+              widget.investor.investmentDescription,
               style: blackSubtitleStyle,
               textAlign: TextAlign.center,
             ),
@@ -110,9 +108,9 @@ class _PitchDialogState extends State<PitchDialog> {
           ),
           const SizedBox(height: 30),
           SizedBox(
-            width: 250, 
+            width: 250,
             child: Text(
-              "You will need a minimum dice roll of ${investor.minDiceRoll}, and you have ${investor.triesLeft} tries left.",
+              "You will need a minimum dice roll of ${widget.investor.minDiceRoll}, and you have ${widget.investor.triesLeft} tries left.",
               style: blackSubtitleStyle,
               textAlign: TextAlign.center,
             ),
@@ -122,14 +120,14 @@ class _PitchDialogState extends State<PitchDialog> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               OrangeElevatedButton(
-                text: "Sign",
-                onPressed: () {
-                  if (user.percentOwned - investor.profitsPercent < 51) {
-                    Navigator.pop(context);
-                    pushMaintainOwnershipDialog(context);
-                  } else if (investor.triesLeft != 0) {
-                    rollDice();
-                    /* if (diceImageIndex + 1 >= investor.minDiceRoll) {
+                  text: "Sign",
+                  onPressed: () {
+                    if (user.percentOwned - widget.investor.profitsPercent < 51) {
+                      Navigator.pop(context);
+                      pushMaintainOwnershipDialog(context);
+                    } else if (widget.investor.triesLeft != 0) {
+                      rollDice();
+                      /* if (diceImageIndex + 1 >= investor.minDiceRoll) {
                       Timer.periodic(const Duration(seconds: 4), (timer) {
                         signInvestor(investor);
                         timer.cancel();
@@ -137,9 +135,8 @@ class _PitchDialogState extends State<PitchDialog> {
                     }
                     else 
                       investor.decTries(); */
-                  }
-                }
-              ),
+                    }
+                  }),
               OrangeElevatedButton(
                 text: "Back out",
                 onPressed: () => Navigator.pop(context),
