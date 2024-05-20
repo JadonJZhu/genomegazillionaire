@@ -1,6 +1,3 @@
-import 'dart:math';
-import 'package:genome_gazillionaire/data/process_data.dart';
-import 'package:genome_gazillionaire/data/user_data.dart';
 import 'package:genome_gazillionaire/models/entity_model.dart';
 
 class Investor extends Entity {
