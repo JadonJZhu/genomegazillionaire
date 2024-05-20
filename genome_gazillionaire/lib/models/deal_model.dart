@@ -32,10 +32,10 @@ class Deal extends Entity {
     _isPurchased = true;
     process.currentMultiplier *= multiplierValue;
 
-    final double random = Random().nextDouble() * 100;
+    /* final double random = Random().nextDouble() * 100;
     if (random < effectiveLoopholePercent) {
       process.seizeProcess(loopholeOwnershipHours);
-    }
+    } */
   }
 
   int get effectiveLoopholePercent => baseLoopholePercent + userData.numLawyers;
