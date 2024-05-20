@@ -32,7 +32,7 @@ class _DealsPageState extends State<DealsPage> {
       } else if (user.balance < deal.cost) {
         Navigator.pop(context);
         pushInsufficientFundsDialog(context);
-      } else {
+      } else if (!deal.isPurchased) {
         Navigator.pop(context);
         deal.purchase();
         user.balance -= deal.cost;
@@ -59,7 +59,7 @@ class _DealsPageState extends State<DealsPage> {
     return Scaffold(
       backgroundColor: Colors.orange,
       appBar: AppBar(
-        title: Text("Deals: \$${user.balance}", style: pageTitleStyle),
+        title: Text("Deals: \$${user.balance.toStringAsPrecision(8)}", style: pageTitleStyle),
         backgroundColor: const Color.fromARGB(255, 231, 167, 107),
       ),
       body: DealsListView(signDeal: signDeal),

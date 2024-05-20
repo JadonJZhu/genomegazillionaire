@@ -23,7 +23,7 @@ class ManagerButton extends StatelessWidget {
             child: Opacity(
               opacity: process.hasManager ? 1.0 : 0.5,
               child: Image.asset(
-                process.avatarFilePath,
+                "../../../assets/images/manager.png",
               ),
             ),
           ),
@@ -33,7 +33,8 @@ class ManagerButton extends StatelessWidget {
           child: Transform.scale(
             scale: 0.8,
             child: OrangeElevatedButton(
-              text: "\$${process.managerCost.toStringAsExponential()}",
+              text: "\$${process.managerCost}",
+              //text: "\$${process.managerCost.toStringAsExponential()}",
               onPressed: process.isPurchased ? () => hireManager(process) : null,
               padding: EdgeInsets.zero,
               elevation: 0

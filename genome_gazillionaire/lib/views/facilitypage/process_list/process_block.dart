@@ -50,12 +50,16 @@ class ProcessBlock extends StatelessWidget {
                     SizedBox(height: 5),
                     Row(
                       children: [
-                        OrangeElevatedButton(
-                          onPressed: process.isPurchased
-                              ? () => completeProcess(process)
-                              : null,
-                          text: "\$${process.effectiveMoneyPerClick} per click",
-                          elevation: 0,
+                        SizedBox(
+                          height: 30,
+                          width: 165,
+                          child: OrangeElevatedButton(
+                            onPressed: process.isPurchased
+                                ? () => completeProcess(process)
+                                : null,
+                            text: "\$${process.effectiveMoneyPerClick.toStringAsFixed(1)} per click",
+                            elevation: 0,
+                          ),
                         ),
                         SizedBox(width: 10),
                         RateContainer(

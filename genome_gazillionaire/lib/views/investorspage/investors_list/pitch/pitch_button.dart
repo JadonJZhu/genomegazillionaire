@@ -3,7 +3,7 @@ import 'package:genome_gazillionaire/models/investor_model.dart';
 import 'package:genome_gazillionaire/views/investorspage/investors_list/pitch/pitch_dialog.dart';
 
 class PitchButton extends StatelessWidget {
-  const PitchButton(
+  PitchButton(
       {super.key, required this.investor, required this.signInvestor});
 
   final Investor investor;
@@ -30,7 +30,7 @@ class PitchButton extends StatelessWidget {
         ),
         child: ClipOval(
           child: Image.asset(
-            investor.avatarFilePath,
+            "../../../../assets/images/pitch.png",
           ),
         ),
       ),

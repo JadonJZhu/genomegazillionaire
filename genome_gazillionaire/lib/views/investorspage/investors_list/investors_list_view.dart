@@ -4,7 +4,7 @@ import 'package:genome_gazillionaire/models/investor_model.dart';
 import 'package:genome_gazillionaire/views/investorspage/investors_list/investor_block.dart';
 
 class InvestorsListView extends StatelessWidget {
-  InvestorsListView({super.key, required this.signInvestor });
+  InvestorsListView({super.key, required this.signInvestor});
 
   final investorsList = investorData;
 

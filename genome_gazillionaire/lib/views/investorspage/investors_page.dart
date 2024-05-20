@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:genome_gazillionaire/data/process_data.dart';
 import 'package:genome_gazillionaire/data/user_data.dart';
 import 'package:genome_gazillionaire/models/investor_model.dart';
 import 'package:genome_gazillionaire/views/globals/global_styles.dart';
@@ -14,27 +17,29 @@ class InvestorsPage extends StatefulWidget {
 
 class _InvestorsPageState extends State<InvestorsPage> {
   final user = userData;
-
+  
   void signInvestor(Investor investor) {
     setState(() {
-      
-      if (user.percentOwned - investor.profitsPercent < 51) {
-        Navigator.pop(context);
-        pushMaintainOwnershipDialog(context);
-      } else {
-        Navigator.pop(context);
+      if (investor.triesLeft != 0)
+      {
         investor.purchase();
+        userData.balance += investor.offeredMoney;
+        userData.percentOwned -= investor.profitsPercent;
+        processData.forEach((process) {
+          process.currentMultiplier *= (1 - investor.profitsPercent/100);
+        });
+        investor.eliminateTries();
       }
+      Navigator.pop(context);
     });
   }
 
-  
   @override
   Widget build(BuildContext context) {
         return Scaffold(
       backgroundColor: Color.fromARGB(255, 7, 45, 171),
       appBar: AppBar(
-        title: Text("Investors: \$${user.balance}", style: pageTitleStyle),
+        title: Text("Investors: \$${user.balance.toStringAsPrecision(8)}", style: pageTitleStyle),
         backgroundColor: const Color.fromARGB(255, 7, 45, 171),
       ),
       body: InvestorsListView(signInvestor: signInvestor),

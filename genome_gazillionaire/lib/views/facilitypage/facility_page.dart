@@ -103,12 +103,22 @@ class _FacilityPageState extends State<FacilityPage> {
     return Scaffold(
       backgroundColor: Colors.lightGreen,
       appBar: AppBar(
-        title: Text("Genome Gazillionaire \$${user.balance.toStringAsExponential()}",
-            style: pageTitleStyle),
-        leading: CircleAvatar(
-          backgroundImage: AssetImage("../../assets/images/1.png"),
+        title: Text(
+          "Genome Gazillionaire \$${user.balance.toStringAsPrecision(8)}",
+          //"Genome Gazillionaire \$${user.balance.toStringAsExponential()}",
+          style: pageTitleStyle),
+        leading: Padding( 
+          padding: EdgeInsets.all(5),
+          child: ClipRRect(
+            borderRadius: BorderRadius.all(Radius.circular(10)),//add border radius here
+            child: Image.asset("../../assets/images/user.png"),//add image location here
+          ),
         ),
+        /* leading: CircleAvatar(
+          backgroundImage: AssetImage("../../assets/images/1.png"),
+        ), */
         backgroundColor: Colors.green,
+        //toolbarHeight: 80,
       ),
       body: Column(
         children: [

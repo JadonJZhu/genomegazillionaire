@@ -22,25 +22,33 @@ class NegotiationDialog extends StatelessWidget {
       borderColor: const Color.fromARGB(255, 123, 123, 123),
       child: Column(
         children: [
-          Text(
-            deal.title,
-            style: titleStyle,
-            textScaler: const TextScaler.linear(1.2),
+          SizedBox(
+            width: 250,
+            child: Text(
+              deal.title,
+              style: titleStyle,
+              textAlign: TextAlign.center,
+              textScaler: const TextScaler.linear(1.2),
+            ),
           ),
           const SizedBox(
             height: 15,
           ),
           const ContainerDivider(),
           const SizedBox(height: 30),
-          Text(
-            deal.negotiationDescription,
-            style: blackSubtitleStyle,
+          SizedBox(
+            width: 250, 
+            child: Text(
+              deal.negotiationDescription,
+              style: blackSubtitleStyle,
+              textAlign: TextAlign.center,
+            ),
           ),
           const SizedBox(height: 30),
           ClipOval(
             child: SizedBox(
               height: 200,
-              child: Image.asset('../../../../assets/images/1.png'),
+              child: Image.asset('../../../../assets/images/wheel.png'),
             ),
           ),
           const SizedBox(height: 30),

@@ -20,8 +20,8 @@ class Investor extends Entity {
 
     bool _isPurchased = false;
     bool get isPurchased => _isPurchased;
-    bool purchase() {
-      final int random = Random().nextInt(6) + 1;
+    bool purchase() => _isPurchased = true;
+      /* final int random = Random().nextInt(6) + 1;
       if (random >= minDiceRoll && _triesLeft > 0) {
         _isPurchased = true;
         userData.balance += offeredMoney;
@@ -35,10 +35,10 @@ class Investor extends Entity {
         if (_triesLeft != 0)
           decTries();
         return false;
-      }
-    }
+      } */
     
     int _triesLeft = 4;
     int get triesLeft => _triesLeft;
     void decTries() => _triesLeft -= 1;
+    void eliminateTries() => _triesLeft = 0;
 }

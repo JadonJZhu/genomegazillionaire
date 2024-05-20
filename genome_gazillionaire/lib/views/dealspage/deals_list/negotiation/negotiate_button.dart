@@ -30,7 +30,7 @@ class NegotiateButton extends StatelessWidget {
         ),
         child: ClipOval(
           child: Image.asset(
-            deal.avatarFilePath,
+            "../../../../assets/images/negotiate.png",
           ),
         ),
       ),

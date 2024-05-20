@@ -7,10 +7,9 @@ import 'package:genome_gazillionaire/views/investorspage/investors_list/pitch/ou
 import 'package:genome_gazillionaire/views/investorspage/investors_list/pitch/pitch_button.dart';
 
 class InvestorBlock extends StatelessWidget {
-  const InvestorBlock({super.key, required this.investor, required this.signInvestor});
+  InvestorBlock({super.key, required this.investor, required this.signInvestor});
 
   final Investor investor;
-
   final void Function(Investor) signInvestor;
 
   @override
@@ -40,15 +39,16 @@ class InvestorBlock extends StatelessWidget {
                         width: 250,
                         child: Column(
                           children: [
-                            Text(investor.title, style: orangeTitleStyle),
+                            const SizedBox(height: 5),
+                            Text(investor.title, style: titleStyle),
                             Text(
-                              "${investor.profitsPercent}% of profits for \$${investor.offeredMoney}",
+                              "Offers \$${investor.offeredMoney} for",
                               style: blackSubtitleStyle,
                             ),
-                            /* Text(
-                              "${investor.profitsPercent}% of profits for \$${investor.offeredMoney}",
+                            Text(
+                              "${investor.profitsPercent}% of all profits",
                               style: orangeSubtitleTwoStyle,
-                            ), */
+                            ),
                           ],
                         ),
                       ),

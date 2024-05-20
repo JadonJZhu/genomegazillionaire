@@ -28,11 +28,15 @@ class DescriptionDialog extends StatelessWidget {
       borderColor: borderColor,
       child: Column(
         children: [
-          Text(
-            entity.title,
-            style: GoogleFonts.lato(
-              fontSize: 30,
-              fontWeight: FontWeight.w800,
+          SizedBox(
+            width: 250,
+            child: Text(
+              entity.title,
+              style: GoogleFonts.lato(
+                fontSize: 30,
+                fontWeight: FontWeight.w800,
+              ),
+              textAlign: TextAlign.center,
             ),
           ),
           const SizedBox(height: 30),
@@ -43,11 +47,15 @@ class DescriptionDialog extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 30),
-          Text(
-            entity.description,
-            style: GoogleFonts.lato(
-              fontSize: 15,
-              fontWeight: FontWeight.w600,
+          SizedBox(
+            width: 250,
+            child: Text(
+              entity.description,
+              style: GoogleFonts.lato(
+                fontSize: 15,
+                fontWeight: FontWeight.w600,
+              ),
+              textAlign: TextAlign.center,
             ),
           ),
           const Spacer(),

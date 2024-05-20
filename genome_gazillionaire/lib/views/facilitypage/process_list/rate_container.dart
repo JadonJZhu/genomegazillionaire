@@ -16,7 +16,7 @@ class RateContainer extends StatelessWidget {
         // margin: const EdgeInsets.only(top: 5.0, bottom: 5.0),
         // padding: const EdgeInsets.symmetric(horizontal: 10),
         height: 30,
-        width: 100,
+        width: 120,
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20),
@@ -36,7 +36,7 @@ class RateContainer extends StatelessWidget {
           child: Center(
               child: FractionalTranslation(
                   translation: const Offset(-0.05, 0),
-                  child: Text("Rate: \$$rate", style: subtitleStyle))),
+                  child: Text("Rate: \$${rate.toStringAsFixed(1)}", style: subtitleStyle))),
         ),
       ),
     );

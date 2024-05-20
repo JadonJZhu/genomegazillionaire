@@ -3,7 +3,7 @@ class User {
 
   final String username;
   final String iconFilePath;
-  double balance = 10000000000000.0;
+  double balance = 1000;
   int numLawyers = 0;
   int percentOwned = 100;
 
