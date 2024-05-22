@@ -104,8 +104,7 @@ class _FacilityPageState extends State<FacilityPage> {
       backgroundColor: Colors.lightGreen,
       appBar: AppBar(
         title: Text(
-          "Genome Gazillionaire \$${user.balance.toStringAsPrecision(8)}",
-          //"Genome Gazillionaire \$${user.balance.toStringAsExponential()}",
+          "Genome Gazillionaire \$${user.balanceString}",
           style: pageTitleStyle),
         leading: Padding( 
           padding: EdgeInsets.all(5),
@@ -114,16 +113,12 @@ class _FacilityPageState extends State<FacilityPage> {
             child: Image.asset("../../assets/images/user.png"),//add image location here
           ),
         ),
-        /* leading: CircleAvatar(
-          backgroundImage: AssetImage("../../assets/images/1.png"),
-        ), */
         backgroundColor: Colors.green,
-        //toolbarHeight: 80,
       ),
       body: Column(
         children: [
           SizedBox(
-            height: 650,
+            height: 700,
             child: ProcessListView(
               processList: processList,
               purchaseProcess: purchaseProcess,

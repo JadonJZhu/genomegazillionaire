@@ -12,10 +12,12 @@ class DealsListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: dealsList.length,
-      itemBuilder: (context, index) =>
-          DealBlock(deal: dealsList[index], signDeal: signDeal),
+    return Expanded(
+      child: ListView.builder(
+        itemCount: dealsList.length,
+        itemBuilder: (context, index) =>
+            DealBlock(deal: dealsList[index], signDeal: signDeal),
+      ),
     );
   }
 }

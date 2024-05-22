@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:genome_gazillionaire/data/user_data.dart';
 import 'package:genome_gazillionaire/models/deal_model.dart';
 import 'package:genome_gazillionaire/views/dealspage/deals_list/deals_list_view.dart';
+import 'package:genome_gazillionaire/views/dealspage/lawyer_block.dart';
 import 'package:genome_gazillionaire/views/globals/dialogs/small_text_dialog_box.dart';
 import 'package:genome_gazillionaire/views/globals/global_functions.dart';
 import 'package:genome_gazillionaire/views/globals/global_styles.dart';
@@ -59,10 +60,19 @@ class _DealsPageState extends State<DealsPage> {
     return Scaffold(
       backgroundColor: Colors.orange,
       appBar: AppBar(
-        title: Text("Deals: \$${user.balance.toStringAsPrecision(8)}", style: pageTitleStyle),
+        title: Text("Deals: \$${user.balanceString}", style: pageTitleStyle),
         backgroundColor: const Color.fromARGB(255, 231, 167, 107),
       ),
-      body: DealsListView(signDeal: signDeal),
+      body: Column(
+        children: [
+          Container(
+            height: 200,
+            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+            child: const LawyerBlock(),
+          ),
+          DealsListView(signDeal: signDeal),
+        ],
+      ),
     );
   }
 }

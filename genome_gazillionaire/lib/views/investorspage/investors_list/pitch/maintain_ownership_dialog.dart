@@ -12,7 +12,7 @@ class MaintainOwnershipDialog extends StatelessWidget {
           "Insufficient stocks. You must retain at least 51% of your company profits to maintain ownership.",
           style: blackSubtitleStyle,
           textAlign: TextAlign.center,  
-          textScaler: const TextScaler.linear(1.5),
+          textScaler: const TextScaler.linear(1.3),
         ),
       );
   }

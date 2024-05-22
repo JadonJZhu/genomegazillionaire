@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 final pageTitleStyle = GoogleFonts.lato(
   fontWeight: FontWeight.w900,
-  fontSize: 30,
+  fontSize: 25,
   color: Colors.white,
 );
 

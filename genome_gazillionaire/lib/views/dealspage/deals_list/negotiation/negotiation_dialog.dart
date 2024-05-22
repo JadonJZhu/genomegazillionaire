@@ -26,18 +26,6 @@ class _NegotiationDialogState extends State<NegotiationDialog> {
   double turns = 0;
 
   Random random = Random();
-  int wheelImageIndex = 0;
-  int counter = 0;
-  final List<String> wheelImages = [
-    '../../../../assets/images/wheel_1.png',
-    '../../../../assets/images/wheel_2.png',
-    '../../../../assets/images/wheel_3.png',
-    '../../../../assets/images/wheel_4.png',
-    '../../../../assets/images/wheel_5.png',
-    '../../../../assets/images/wheel_6.png',
-    '../../../../assets/images/wheel_7.png',
-    '../../../../assets/images/wheel_8.png'
-  ];
 
   void spinWheel() {
     int num = random.nextInt(7) + 1;
