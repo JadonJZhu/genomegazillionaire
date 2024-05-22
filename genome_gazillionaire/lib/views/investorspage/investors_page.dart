@@ -34,7 +34,7 @@ class _InvestorsPageState extends State<InvestorsPage> {
   @override
   Widget build(BuildContext context) {
         return Scaffold(
-      backgroundColor: Color.fromARGB(255, 7, 45, 171),
+      backgroundColor: const Color.fromARGB(255, 7, 45, 171),
       appBar: AppBar(
         title: Text("Investors: \$${user.balance.toStringAsPrecision(8)}", style: pageTitleStyle),
         backgroundColor: const Color.fromARGB(255, 7, 45, 171),

@@ -7,7 +7,7 @@ import 'package:genome_gazillionaire/views/investorspage/investors_list/pitch/ou
 import 'package:genome_gazillionaire/views/investorspage/investors_list/pitch/pitch_button.dart';
 
 class InvestorBlock extends StatelessWidget {
-  InvestorBlock({super.key, required this.investor, required this.signInvestor});
+  const InvestorBlock({super.key, required this.investor, required this.signInvestor});
 
   final Investor investor;
   final void Function(Investor) signInvestor;
