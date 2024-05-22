@@ -5,7 +5,7 @@ class User {
 
   final String username;
   final String iconFilePath;
-  double balance = 1000;
+  double balance = 100000;
 
   int numLawyers = 0;
   final int maxLawyers = 9;

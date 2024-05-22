@@ -31,7 +31,7 @@ class _DealsPageState extends State<DealsPage> {
           },
         );
       } else if (user.balance < deal.cost) {
-        Navigator.pop(context);
+         Navigator.pop(context);
         pushInsufficientFundsDialog(context);
       } else if (!deal.isPurchased) {
         Navigator.pop(context);

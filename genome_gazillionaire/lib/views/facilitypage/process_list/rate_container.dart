@@ -36,7 +36,7 @@ class RateContainer extends StatelessWidget {
           child: Center(
               child: FractionalTranslation(
                   translation: const Offset(-0.05, 0),
-                  child: Text("Rate: \$${rate.toStringAsFixed(1)}", style: subtitleStyle))),
+                  child: Text("Rate: \$${rate.toStringAsFixed(0)}", style: subtitleStyle))),
         ),
       ),
     );

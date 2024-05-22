@@ -11,7 +11,8 @@ import 'package:genome_gazillionaire/views/globals/dialogs/large_dialog_box.dart
 import 'package:genome_gazillionaire/views/globals/global_styles.dart';
 
 class NegotiationDialog extends StatefulWidget {
-  NegotiationDialog({super.key, required this.deal, required this.signDeal});
+  const NegotiationDialog(
+      {super.key, required this.deal, required this.signDeal});
 
   final Deal deal;
   final void Function(Deal) signDeal;
@@ -27,22 +28,34 @@ class _NegotiationDialogState extends State<NegotiationDialog> {
 
   Random random = Random();
 
+  bool _dialogOpen = true;
+
+  @override
+  void dispose() {
+    _dialogOpen = false; // Set the flag to false when the dialog is disposed
+    super.dispose();
+  }
+
   void spinWheel() {
     int num = random.nextInt(7) + 1;
     setState(() {
-      turns += 1 + num / 8;
+      if (_dialogOpen) {
+        turns += 1 + num / 8;
+      }
     });
 
-    if (num/8 <= widget.deal.baseLoopholePercent/100) {
+    if (num / 8 <= widget.deal.effectiveLoopholePercent / 100) {
       widget.deal.process.seizeProcess(widget.deal.loopholeOwnershipHours);
-    } 
+    }
 
     Timer(const Duration(milliseconds: 1200), () {
+      if (_dialogOpen) {
+        setState(() {
+          turns = 0;
+        });
+      }
       widget.signDeal(widget.deal);
-      setState(() {
-        turns = 0;
-      });
-    }); 
+    });
   }
 
   @override
@@ -67,7 +80,7 @@ class _NegotiationDialogState extends State<NegotiationDialog> {
           const ContainerDivider(),
           const SizedBox(height: 30),
           SizedBox(
-            width: 250, 
+            width: 250,
             child: Text(
               widget.deal.negotiationDescription,
               style: blackSubtitleStyle,
@@ -75,21 +88,21 @@ class _NegotiationDialogState extends State<NegotiationDialog> {
             ),
           ),
           SizedBox(
-            height: 200, 
+            height: 200,
             child: Stack(
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.all(30),
                   child: AnimatedRotation(
-                    turns: turns, 
-                    duration: const Duration(seconds: 1),
-                    child: Image.asset('../../../../assets/images/wheel.png')
-                  ),
+                      turns: turns,
+                      duration: const Duration(seconds: 1),
+                      child:
+                          Image.asset('../../../../assets/images/wheel.png')),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(30),
-                  child: Image.asset('../../../../assets/images/pointer.png')
-                ),
+                    padding: const EdgeInsets.all(30),
+                    child:
+                        Image.asset('../../../../assets/images/pointer.png')),
               ],
             ),
           ),
@@ -100,9 +113,11 @@ class _NegotiationDialogState extends State<NegotiationDialog> {
             children: [
               OrangeElevatedButton(
                 text: "Sign",
-                onPressed: () { 
-                  if (!widget.deal.process.isPurchased || user.balance < widget.deal.cost || widget.deal.isPurchased) {
-                    widget.signDeal(widget.deal); 
+                onPressed: () {
+                  if (!widget.deal.process.isPurchased ||
+                      user.balance < widget.deal.cost ||
+                      widget.deal.isPurchased) {
+                    widget.signDeal(widget.deal);
                   } else {
                     spinWheel();
                   }

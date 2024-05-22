@@ -57,7 +57,7 @@ class ProcessBlock extends StatelessWidget {
                             onPressed: process.isPurchased
                                 ? () => completeProcess(process)
                                 : null,
-                            text: "\$${process.effectiveMoneyPerClick.toStringAsFixed(1)} per click",
+                            text: "\$${process.effectiveMoneyPerClick.toStringAsFixed(0)} per click",
                             elevation: 0,
                           ),
                         ),
