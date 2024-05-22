@@ -10,6 +10,7 @@ import 'package:genome_gazillionaire/views/globals/global_styles.dart';
 import 'dart:async';
 import 'package:genome_gazillionaire/views/globals/buttons/orange_elevated_button.dart';
 import 'package:genome_gazillionaire/views/investorspage/investors_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class FacilityPage extends StatefulWidget {
   const FacilityPage({super.key});
@@ -103,17 +104,31 @@ class _FacilityPageState extends State<FacilityPage> {
     return Scaffold(
       backgroundColor: Colors.lightGreen,
       appBar: AppBar(
-        title: Text(
-          "Genome Gazillionaire \$${user.balanceString}",
-          style: pageTitleStyle),
-        leading: Padding( 
-          padding: EdgeInsets.all(5),
-          child: ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(10)),//add border radius here
-            child: Image.asset("../../assets/images/user.png"),//add image location here
+        title: Container(
+          alignment: Alignment.centerLeft,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Genome Gazillionaire",
+                textAlign: TextAlign.left,
+                style: pageTitleStyle,
+              ),
+              Text("\$${user.balanceString}", style: GoogleFonts.lato(color: Colors.white, fontWeight: FontWeight.w400,),),
+            ],
           ),
         ),
+        leading: Row(
+          children: [
+            SizedBox(width: 15),
+            SizedBox(
+              height: 41,
+              child: Image.asset(user.iconFilePath),
+            ),
+          ],
+        ),
         backgroundColor: Colors.green,
+        toolbarHeight: 80,
       ),
       body: Column(
         children: [

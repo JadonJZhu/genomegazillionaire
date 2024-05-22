@@ -3,7 +3,7 @@ import 'package:genome_gazillionaire/models/process_model.dart';
 List<Process> processData = [
   Process(
     title: "Gene Selection",
-    description: "Description1",
+    description: "Gene selection involves identifying specific genes of interest from a larger set based on criteria such as their association with particular traits, diseases, or biological functions. This process employs statistical, computational, and experimental methods to focus research and applications in genetics, biotechnology, and personalized medicine.",
     avatarFilePath: "../../assets/images/gene_selection.png",
     cost: 100,
     baseMoneyPerSecond: 10,
@@ -12,7 +12,7 @@ List<Process> processData = [
   ),
   Process(
     title: "DNA Synthesis",
-    description: "Description2",
+    description: "Chemical DNA synthesis is a laboratory process used to create artificial DNA molecules by sequentially adding nucleotide residues in a specified order. This method enables the precise construction of custom DNA sequences for various applications in research, diagnostics, and biotechnology.",
     avatarFilePath: "../../assets/images/dna_synthesis.png",
     cost: 1000,
     baseMoneyPerSecond: 50,
@@ -21,7 +21,7 @@ List<Process> processData = [
   ),
   Process(
     title: "PCR",
-    description: "Description3",
+    description: "Polymerase Chain Reaction (PCR) is a laboratory technique used to amplify specific DNA sequences, making millions of copies from a small initial sample. This process is essential for various applications in genetics, forensics, and medical diagnostics, enabling detailed analysis and manipulation of DNA.",
     avatarFilePath: "../../assets/images/pcr.png",
     cost: 5000,
     baseMoneyPerClick: 100,
@@ -30,7 +30,7 @@ List<Process> processData = [
   ),
   Process(
     title: "Recombinant Plasmid",
-    description: "",
+    description: "Making recombinant plasmids involves inserting a specific DNA fragment into a plasmid vector, which is then introduced into bacteria for cloning and expression. This technique is fundamental in genetic engineering for studying gene function, producing proteins, and developing genetically modified organisms.",
     avatarFilePath: "../../assets/images/recombinant_plasmid.png",
     cost: 20000,
     baseMoneyPerClick: 500,
@@ -39,7 +39,7 @@ List<Process> processData = [
   ),
   Process(
     title: "Protein Expression",
-    description: "",
+    description: "Bacterial protein expression is a method where bacteria, typically E. coli, are genetically engineered to produce a specific protein from an inserted gene. This technique is widely used in biotechnology and research for producing proteins in large quantities for various applications, including pharmaceuticals and industrial enzymes.",
     avatarFilePath: "../../assets/images/bacterial_protein_expression.png",
     cost: 50000,
     baseMoneyPerClick: 1500,
@@ -48,7 +48,7 @@ List<Process> processData = [
   ),
   Process(
     title: "Protein Purification",
-    description: "",
+    description: "Protein purification is the process of isolating a specific protein from a complex mixture, typically involving multiple steps such as chromatography and centrifugation. This technique is crucial for obtaining high-purity proteins for research, therapeutic use, and industrial applications.",
     avatarFilePath: "../../assets/images/protein_purification.png",
     cost: 100000,
     baseMoneyPerClick: 3000,
@@ -57,7 +57,7 @@ List<Process> processData = [
   ),
   Process(
     title: "Patent Filing",
-    description: "",
+    description: "Patent filing is the process of submitting an application to a patent office to obtain legal protection for an invention, granting exclusive rights to the inventor. This involves detailed documentation of the invention's novelty, usefulness, and non-obviousness, ensuring intellectual property rights are secured.",
     avatarFilePath: "../../assets/images/patent_filing.png",
     cost: 250000,
     baseMoneyPerClick: 7500,
@@ -66,7 +66,7 @@ List<Process> processData = [
   ),
   Process(
     title: "Clinical Trials",
-    description: "",
+    description: "Drug clinical trials are systematic studies conducted with human participants to evaluate the safety, efficacy, and side effects of new medications or treatments. These trials are conducted in phases, from initial small-scale studies to large-scale testing, to ensure that a drug is safe and effective for public use.",
     avatarFilePath: "../../assets/images/clinical_trials.png",
     cost: 500000,
     baseMoneyPerClick: 10000,
@@ -75,7 +75,7 @@ List<Process> processData = [
   ),
   Process(
     title: "Shipping",
-    description: "",
+    description: "Shipping for a pharmaceutical company involves the careful logistics of transporting medications and related products under strict regulatory and environmental controls to maintain their safety, efficacy, and integrity. This process includes adhering to temperature requirements, secure packaging, and compliance with international and local shipping regulations.",
     avatarFilePath: "../../assets/images/shipping.png",
     cost: 1000000,
     baseMoneyPerClick: 15000,
