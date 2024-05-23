@@ -15,6 +15,7 @@ class _LawyerBlockState extends State<LawyerBlock> {
 
   void hireLawyer() {
     setState(() {
+      user.balance -= user.lawyerPrice;
       user.numLawyers++;
     });
   }
