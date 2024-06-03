@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:genome_gazillionaire/data/process_data.dart';
 import 'package:genome_gazillionaire/data/user_data.dart';
@@ -16,6 +18,28 @@ class InvestorsPage extends StatefulWidget {
 class _InvestorsPageState extends State<InvestorsPage> {
   final user = userData;
   final processList = processData;
+
+  late Timer _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    // Start the periodic timer
+    _timer = Timer.periodic(const Duration(seconds: 1), refreshPage);
+  }
+
+  @override
+  void dispose() {
+    // Cancel the timer to prevent memory leaks
+    _timer.cancel();
+    super.dispose();
+  }
+
+  void refreshPage(Timer timer) {
+    setState(
+      () {},
+    );
+  }
 
   void signInvestor(Investor investor) {
     setState(() {

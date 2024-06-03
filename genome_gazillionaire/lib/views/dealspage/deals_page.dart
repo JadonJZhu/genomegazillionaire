@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:genome_gazillionaire/data/user_data.dart';
 import 'package:genome_gazillionaire/models/deal_model.dart';
@@ -17,6 +19,26 @@ class DealsPage extends StatefulWidget {
 class _DealsPageState extends State<DealsPage> {
   final user = userData;
 
+  late Timer _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    // Start the periodic timer
+    _timer = Timer.periodic(const Duration(seconds: 1), refreshPage);
+  }
+
+  @override
+  void dispose() {
+    // Cancel the timer to prevent memory leaks
+    _timer.cancel();
+    super.dispose();
+  }
+
+  void refreshPage(Timer timer) {
+    setState(() {},);
+  }
+
   void signDeal(Deal deal) {
     setState(() {
       if (!deal.process.isPurchased) {
@@ -31,7 +53,7 @@ class _DealsPageState extends State<DealsPage> {
           },
         );
       } else if (user.balance < deal.cost) {
-         Navigator.pop(context);
+        Navigator.pop(context);
         pushInsufficientFundsDialog(context);
       } else if (!deal.isPurchased) {
         Navigator.pop(context);
